@@ -2,773 +2,1171 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 <title>Warhammer 40,000 — Chroniques de l'Imperium</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg0:#07050300;
-  --bg0s:#07050300;
-  --bg1:#110d09;
-  --bg2:#1a1208;
-  --bg3:#241a0c;
-  --bd:#3a2810;
-  --bd2:#5a3e18;
-  --gold:#c9a84c;
-  --gold2:#e8c96a;
-  --parch:#d4b896;
-  --parch2:#b89870;
-  --crim:#8b1a1a;
-  --crim2:#b52020;
-  --blood:#cc2222;
-  --steel:#7a8a96;
-  --chaos:#6b0f8b;
+  --bg0:#080604;--bg1:#110d09;--bg2:#1a1208;--bg3:#241a0c;
+  --bd:#3a2810;--bd2:#5a3e18;--bd3:#7a5a28;
+  --gold:#c9a84c;--gold2:#e8c96a;
+  --parch:#d4b896;--parch2:#b89870;--parch3:#9a7850;
+  --crim:#8b1a1a;--crim2:#b52020;--blood:#cc2222;
+  --steel:#7a8a96;--grn:#4caa4c;
 }
-body{
-  background:#080604;
-  color:var(--parch);
-  font-family:'Crimson Text',Georgia,serif;
-  font-size:17px;
-  min-height:100vh;
-  overflow-x:hidden;
-  background-image:
-    radial-gradient(ellipse at 15% 0%,rgba(139,26,26,.14) 0%,transparent 55%),
-    radial-gradient(ellipse at 85% 100%,rgba(107,15,139,.09) 0%,transparent 55%);
-}
-body::before{
-  content:'';
-  position:fixed;inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.035) 2px,rgba(0,0,0,.035) 4px);
-  pointer-events:none;z-index:9999;
-}
-#app{max-width:820px;margin:0 auto;padding:1.5rem 1rem 4rem;position:relative}
-
-/* HEADER */
-.hdr{text-align:center;padding:2rem 0 1rem;position:relative}
-.aquila{font-size:2.8rem;color:var(--gold);line-height:1;margin-bottom:.4rem;opacity:.9;display:block}
-.t-main{
-  font-family:'Cinzel Decorative',serif;
-  font-size:clamp(1.3rem,5vw,2.3rem);
-  font-weight:700;color:var(--gold);
-  letter-spacing:.06em;
-  text-shadow:0 0 40px rgba(201,168,76,.35),0 2px 6px rgba(0,0,0,.9);
-  line-height:1.2
-}
-.t-sub{
-  font-family:'Cinzel',serif;
-  font-size:clamp(.6rem,2.5vw,.85rem);
-  color:var(--parch2);letter-spacing:.28em;
-  text-transform:uppercase;margin-top:.4rem
-}
-
-/* PANEL */
-.panel{
-  border:1px solid var(--bd);
-  background:var(--bg1);
-  position:relative;
-  padding:clamp(1rem,4vw,1.8rem)
-}
-.panel .c1,.panel .c2,.panel .c3,.panel .c4{
-  position:absolute;width:16px;height:16px;
-  border-color:var(--gold);border-style:solid
-}
-.c1{top:-1px;left:-1px;border-width:2px 0 0 2px}
-.c2{top:-1px;right:-1px;border-width:2px 2px 0 0}
-.c3{bottom:-1px;left:-1px;border-width:0 0 2px 2px}
-.c4{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
-
-/* DIVIDER */
-.div{display:flex;align-items:center;gap:.8rem;margin:1.2rem 0;color:var(--bd2)}
+body{background:var(--bg0);color:var(--parch);font-family:'Crimson Text',Georgia,serif;
+  font-size:clamp(15px,2.4vw,18px);min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 15% 0%,rgba(139,26,26,.16) 0%,transparent 55%),
+    radial-gradient(ellipse at 85% 100%,rgba(107,15,139,.10) 0%,transparent 55%)}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px)}
+#app{max-width:840px;margin:0 auto;padding:1.2rem 1rem 5rem}
+.hdr{text-align:center;padding:1.8rem 0 .8rem}
+.aquila{font-size:clamp(2rem,6vw,3rem);color:var(--gold);display:block;margin-bottom:.3rem;text-shadow:0 0 30px rgba(201,168,76,.5)}
+.t-main{font-family:'Cinzel Decorative',serif;font-size:clamp(1.2rem,4.5vw,2.2rem);font-weight:700;color:var(--gold);letter-spacing:.06em;text-shadow:0 0 40px rgba(201,168,76,.4),0 2px 8px rgba(0,0,0,.95);line-height:1.2}
+.t-sub{font-family:'Cinzel',serif;font-size:clamp(.55rem,2vw,.78rem);color:var(--parch2);letter-spacing:.28em;text-transform:uppercase;margin-top:.35rem}
+.panel{border:1px solid var(--bd);background:var(--bg1);position:relative;padding:clamp(.85rem,3.5vw,1.7rem)}
+.c1,.c2,.c3,.c4{position:absolute;width:14px;height:14px;border-color:var(--gold);border-style:solid}
+.c1{top:-1px;left:-1px;border-width:2px 0 0 2px}.c2{top:-1px;right:-1px;border-width:2px 2px 0 0}
+.c3{bottom:-1px;left:-1px;border-width:0 0 2px 2px}.c4{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.div{display:flex;align-items:center;gap:.7rem;margin:.9rem 0;color:var(--bd2)}
 .div::before,.div::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--bd2),transparent)}
-.div span{color:var(--gold);font-size:.9rem;flex-shrink:0}
-
-/* STATS */
-#sbar{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1.2rem}
-.sb{background:var(--bg2);border:1px solid var(--bd);padding:.5rem .6rem;text-align:center}
-.sl{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.18em;color:var(--parch2);text-transform:uppercase;display:block;margin-bottom:3px;line-height:1.3}
-.sv{font-family:'Cinzel',serif;font-size:clamp(.9rem,3vw,1.1rem);font-weight:600;color:var(--gold)}
-.sbo{width:100%;height:3px;background:var(--bg3);margin-top:4px;overflow:hidden}
+.div span{color:var(--gold);font-size:.85rem;flex-shrink:0}
+#sbar{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin-bottom:.6rem}
+@media(max-width:400px){#sbar{grid-template-columns:repeat(2,1fr)}}
+.sb{background:var(--bg2);border:1px solid var(--bd);padding:.45rem .5rem;text-align:center}
+.sl{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.13em;color:var(--parch2);text-transform:uppercase;display:block;margin-bottom:2px;line-height:1.2}
+.sv{font-family:'Cinzel',serif;font-size:clamp(.82rem,2.4vw,.98rem);font-weight:600;color:var(--gold)}
+.sbo{width:100%;height:2px;background:var(--bg3);margin-top:3px;overflow:hidden}
 .sbi{height:100%;transition:width .6s ease}
-.bh{background:linear-gradient(90deg,#6b1010,#cc2222)}
-.br{background:linear-gradient(90deg,#10386b,#2266cc)}
-.bn{background:linear-gradient(90deg,#5a4a0a,#c9a84c)}
-
-/* SCENE */
-#stitle{
-  font-family:'Cinzel',serif;
-  font-size:clamp(1rem,3.5vw,1.25rem);
-  font-weight:600;color:var(--gold);
-  text-align:center;margin-bottom:1rem;letter-spacing:.04em;line-height:1.3
-}
-#nbox{line-height:1.9;font-size:clamp(.95rem,2.5vw,1.05rem);color:var(--parch);min-height:100px}
-.tcur{display:inline-block;width:2px;height:1.1em;background:var(--gold);vertical-align:text-bottom;animation:blink 1s step-end infinite;margin-left:2px}
+.bh{background:linear-gradient(90deg,#6b1010,#cc2222)}.br{background:linear-gradient(90deg,#10386b,#2266cc)}
+.bn{background:linear-gradient(90deg,#5a4a0a,#c9a84c)}.bi{background:linear-gradient(90deg,#1a5a1a,#3ab03a)}
+#topbar{display:flex;align-items:center;gap:.4rem;margin-bottom:.65rem;flex-wrap:wrap}
+.tbarbtn{background:var(--bg3);border:1px solid var(--bd2);color:var(--parch2);font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .65rem;cursor:pointer;transition:all .18s;white-space:nowrap;flex-shrink:0}
+.tbarbtn:hover{border-color:var(--gold);color:var(--gold)}
+.tbarbtn.fiche{border-color:var(--bd3);color:var(--gold2)}.tbarbtn.fiche:hover{background:rgba(201,168,76,.1)}
+#savemsg2{font-family:'Cinzel',serif;font-size:.5rem;color:var(--parch3);flex:1;text-align:right;letter-spacing:.06em}
+#inv-bar{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.65rem;min-height:20px}
+.ibadge{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.06em;padding:2px 7px;border:1px solid var(--bd3);background:var(--bg3);color:var(--gold2);display:inline-flex;align-items:center;gap:3px}
+.ibadge.eq{border-color:var(--gold);background:rgba(201,168,76,.07)}
+#ttsbar{display:flex;align-items:center;gap:.4rem;padding:.42rem .65rem;background:var(--bg2);border:1px solid var(--bd);margin-bottom:.65rem;flex-wrap:wrap}
+.tbtn{background:transparent;border:1px solid var(--bd2);color:var(--parch2);font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.09em;text-transform:uppercase;padding:.28rem .55rem;cursor:pointer;transition:all .18s;flex-shrink:0}
+.tbtn:hover{border-color:var(--gold);color:var(--gold)}.tbtn.on{background:var(--crim);border-color:var(--crim2);color:var(--gold)}
+.tlbl{font-family:'Cinzel',serif;font-size:.53rem;letter-spacing:.12em;color:var(--parch3);text-transform:uppercase;white-space:nowrap}
+.wave{display:flex;align-items:center;gap:2px;height:13px}
+.wave span{width:2px;background:var(--gold);border-radius:1px;animation:wv 1s ease-in-out infinite}
+.wave span:nth-child(2){animation-delay:.1s;height:8px}.wave span:nth-child(3){animation-delay:.2s;height:12px}
+.wave span:nth-child(4){animation-delay:.3s;height:6px}.wave span:nth-child(5){animation-delay:.4s;height:10px}
+@keyframes wv{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}.wave.h{display:none}
+.spsel{background:var(--bg2);border:1px solid var(--bd2);color:var(--parch2);font-family:'Cinzel',serif;font-size:.53rem;letter-spacing:.07em;padding:.25rem .4rem;cursor:pointer;outline:none}
+.chmark{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.18em;color:var(--bd2);text-transform:uppercase;text-align:right;margin-bottom:.4rem}
+#stitle{font-family:'Cinzel',serif;font-size:clamp(.92rem,3vw,1.18rem);font-weight:600;color:var(--gold);text-align:center;margin-bottom:.8rem;letter-spacing:.04em;line-height:1.3}
+.pgnum{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.14em;color:var(--parch3);text-align:center;margin:.5rem 0}
+.stag{display:inline-block;font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;padding:3px 8px;margin-bottom:.7rem;border:1px solid}
+.t-exp{color:#6ab0d4;border-color:#2a5a7a;background:rgba(42,90,122,.08)}
+.t-com{color:var(--blood);border-color:var(--crim);background:rgba(139,26,26,.08)}
+.t-che{color:#c8940a;border-color:#8a6000;background:rgba(200,148,10,.08)}
+.t-lor{color:#8090d4;border-color:#3a4a8b;background:rgba(58,74,139,.08)}
+.t-npc{color:#6ab08a;border-color:#1a6b3a;background:rgba(26,107,58,.08)}
+.t-tra{color:#d46a6a;border-color:#882222;background:rgba(136,34,34,.08)}
+.t-eve{color:var(--gold2);border-color:var(--bd3);background:rgba(201,168,76,.06)}
+#nbox{line-height:1.95;font-size:clamp(.9rem,2.3vw,1.01rem);color:var(--parch);min-height:80px}
+#nbox p{margin-bottom:.65rem}#nbox p:last-child{margin-bottom:0}
+.tcur{display:inline-block;width:2px;height:1em;background:var(--gold);vertical-align:text-bottom;animation:blink 1s step-end infinite;margin-left:1px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
-/* CHOICES */
-#carea{margin-top:1.5rem;display:flex;flex-direction:column;gap:.6rem}
-.cbtn{
-  background:var(--bg2);border:1px solid var(--bd2);color:var(--parch);
-  font-family:'Crimson Text',serif;font-size:clamp(.9rem,2.5vw,1rem);
-  padding:.8rem 1rem .8rem 1.1rem;cursor:pointer;text-align:left;
-  position:relative;transition:all .2s;line-height:1.5;width:100%;overflow:hidden
-}
-.cbtn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--crim);transition:background .2s}
+.outbox{background:var(--bg3);border-left:3px solid var(--gold);padding:.75rem .95rem;margin-top:.7rem;font-style:italic;color:var(--parch);line-height:1.85;font-size:clamp(.86rem,2.2vw,.95rem)}
+.outbox.og{border-left-color:var(--grn)}.outbox.ob{border-left-color:var(--blood)}.outbox.oc{border-left-color:#c8940a}
+.lootln{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.09em;color:#c8940a;text-align:center;padding:.38rem;margin:.45rem 0;border:1px dashed rgba(200,148,10,.3);background:rgba(200,148,10,.04)}
+.robln{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.09em;color:var(--blood);text-align:center;padding:.38rem;margin:.45rem 0;border:1px dashed var(--crim);background:rgba(139,26,26,.06)}
+#carea{margin-top:1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.cbtn{background:var(--bg2);border:1px solid var(--bd2);color:var(--parch);font-family:'Crimson Text',serif;font-size:clamp(.86rem,2.2vw,.96rem);padding:.72rem .9rem .72rem 1rem;cursor:pointer;text-align:left;position:relative;transition:all .18s;line-height:1.5;width:100%}
+.cbtn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--crim);transition:background .18s}
 .cbtn:hover{background:var(--bg3);border-color:var(--gold);color:var(--gold2)}
-.cbtn:hover::before{background:var(--gold)}
-.cbtn:active{transform:scale(.99)}
-.cbtn:disabled{opacity:.35;cursor:not-allowed}
-.ctag{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;margin-right:.4rem;color:var(--crim2)}
-
-/* FACTION GRID */
-.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
-@media(max-width:520px){.fgrid{grid-template-columns:repeat(2,1fr);gap:.6rem}}
-.fc{
-  border:1px solid var(--bd);background:var(--bg2);
-  padding:clamp(.8rem,3vw,1.1rem) .8rem;cursor:pointer;text-align:center;
-  transition:all .25s;position:relative;overflow:hidden
-}
-.fc:hover{border-color:var(--gold);transform:translateY(-2px);background:var(--bg3)}
-.fi{font-size:clamp(1.6rem,5vw,2rem);margin-bottom:.4rem;display:block}
-.fn{font-family:'Cinzel',serif;font-size:clamp(.65rem,2vw,.8rem);font-weight:600;color:var(--gold);letter-spacing:.04em}
-.fd{font-size:clamp(.7rem,2vw,.78rem);color:var(--parch2);margin-top:.3rem;line-height:1.35;font-style:italic}
-.fsl{font-family:'Cinzel',serif;font-size:.52rem;color:var(--steel);letter-spacing:.08em;margin-top:.5rem;border-top:1px solid var(--bd);padding-top:.4rem}
-
-/* INPUT */
-.niw{margin-top:1.2rem;display:flex;gap:.6rem;flex-wrap:wrap}
-.ni{
-  flex:1;min-width:160px;background:var(--bg2);border:1px solid var(--bd2);
-  color:var(--parch);font-family:'Cinzel',serif;font-size:.9rem;
-  padding:.7rem .9rem;outline:none;letter-spacing:.04em;transition:border-color .2s
-}
-.ni:focus{border-color:var(--gold)}
-.ni::placeholder{color:var(--bd2)}
-
-/* BUTTONS */
-.btnp{
-  background:var(--crim);border:1px solid var(--crim2);color:var(--gold);
-  font-family:'Cinzel',serif;font-size:.75rem;font-weight:600;
-  letter-spacing:.12em;text-transform:uppercase;
-  padding:.7rem 1.2rem;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0
-}
+.cbtn:hover::before{background:var(--gold)}.cbtn:active{transform:scale(.99)}.cbtn:disabled{opacity:.3;cursor:not-allowed}
+.clet{font-family:'Cinzel',serif;font-size:.63rem;font-weight:600;color:var(--gold);margin-right:.45rem;letter-spacing:.04em}
+.chint{display:block;font-size:.75rem;color:var(--parch3);font-style:italic;margin-top:.12rem;padding-left:1.35rem}
+.cbtn.cc::before{background:#c8940a}.cbtn.cc:hover{border-color:#c8940a;color:#e8b840}
+.cbtn.cn::before{background:#2a6b2a}.cbtn.co::before{background:var(--blood)}.cbtn.ce::before{background:#2a6a9a}
+.dtag{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.1em;padding:1px 5px;border:1px solid var(--bd3);color:var(--parch3);margin-right:.3rem;vertical-align:middle;background:var(--bg3)}
+#nextbtn{display:none;width:100%;margin-top:1rem;background:var(--bg3);border:1px solid var(--gold);color:var(--gold2);font-family:'Cinzel',serif;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.72rem 1.2rem;cursor:pointer;transition:all .2s}
+#nextbtn:hover{background:rgba(201,168,76,.12)}.#nextbtn:active{transform:scale(.99)}
+#narea{min-height:22px;display:flex;justify-content:center;gap:.35rem;flex-wrap:wrap;margin:.3rem 0;align-items:center}
+.notif{display:inline-block;font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.07em;padding:2px 6px;animation:fu 2.8s ease forwards}
+.np{color:#6ccc6c;background:rgba(108,204,108,.1)}.nn{color:#cc6c6c;background:rgba(204,108,108,.1)}
+@keyframes fu{0%{opacity:0;transform:translateY(5px)}15%{opacity:1;transform:translateY(0)}80%{opacity:1}100%{opacity:0;transform:translateY(-5px)}}
+#dice-overlay{display:none;position:fixed;inset:0;background:rgba(4,2,1,.9);z-index:500;align-items:center;justify-content:center;flex-direction:column;padding:1rem}
+#dice-overlay.show{display:flex}
+.dice-box{background:var(--bg1);border:1px solid var(--bd2);padding:1.8rem 1.5rem;max-width:420px;width:100%;text-align:center}
+.dice-title{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+#dface{width:80px;height:80px;border:2px solid var(--gold);background:var(--bg2);font-family:'Cinzel',serif;font-size:2.5rem;font-weight:700;color:var(--gold2);display:inline-flex;align-items:center;justify-content:center;margin-bottom:.5rem;box-shadow:0 0 20px rgba(201,168,76,.15),inset 0 0 12px rgba(0,0,0,.6)}
+#dface.rolling{animation:droll .1s ease-in-out infinite alternate}
+#dface.land{animation:dland .4s ease-out forwards}
+@keyframes droll{0%{transform:rotate(-8deg) scale(.96)}100%{transform:rotate(8deg) scale(1.04)}}
+@keyframes dland{0%{transform:rotate(5deg) scale(1.15)}60%{transform:rotate(-2deg) scale(.97)}100%{transform:rotate(0) scale(1)}}
+.dlabel{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.1em;color:var(--parch3);margin-bottom:1rem}
+#dresult{font-family:'Cinzel',serif;font-size:.88rem;letter-spacing:.08em;color:var(--gold2);padding:.5rem .8rem;background:rgba(201,168,76,.08);border:1px solid var(--bd3);margin-bottom:.8rem;min-height:2.2rem}
+.dtable{width:100%;border-collapse:collapse;font-size:.72rem}
+.dtable td{padding:.28rem .45rem;border-bottom:1px solid var(--bg3);color:var(--parch2)}
+.dtable td:first-child{font-family:'Cinzel',serif;font-size:.6rem;font-weight:600;color:var(--gold);width:50px}
+.dtable tr.dactive td{background:rgba(201,168,76,.12);color:var(--gold2)}
+#sheet-overlay{display:none;position:fixed;inset:0;background:rgba(4,2,1,.97);z-index:400;overflow-y:auto;padding:1rem}
+#sheet-overlay.show{display:block}
+.sh-inner{max-width:560px;margin:0 auto}
+.sh-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.sh-title{font-family:'Cinzel Decorative',serif;font-size:clamp(.9rem,3vw,1.2rem);color:var(--gold);letter-spacing:.06em}
+.sh-close{background:transparent;border:1px solid var(--bd2);color:var(--parch2);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.38rem .75rem;cursor:pointer;transition:all .18s}
+.sh-close:hover{border-color:var(--blood);color:var(--blood)}
+.sh-id{display:flex;align-items:center;gap:.9rem;padding:.65rem .85rem;background:var(--bg2);border:1px solid var(--bd);margin-bottom:.75rem}
+.sh-icon{font-size:1.9rem;flex-shrink:0}
+.sh-name{font-family:'Cinzel',serif;font-size:.95rem;font-weight:600;color:var(--gold)}
+.sh-faction{font-size:.75rem;color:var(--parch2);font-style:italic;margin-top:.2rem}
+.sh-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin-bottom:.75rem}
+.sh-stat{background:var(--bg2);border:1px solid var(--bd);padding:.45rem .4rem;text-align:center}
+.sh-stat-lbl{font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.1em;color:var(--parch3);text-transform:uppercase;display:block;margin-bottom:2px}
+.sh-stat-val{font-family:'Cinzel',serif;font-size:1rem;font-weight:600;color:var(--gold)}
+.sh-stat-val.up{color:var(--grn)}
+.sh-sec{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--parch3);margin-bottom:.45rem}
+.eq-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-bottom:.75rem}
+.eq-slot{background:var(--bg2);border:1px dashed var(--bd2);padding:.6rem .55rem;text-align:center;cursor:pointer;transition:all .2s;min-height:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.22rem}
+.eq-slot.full{border-style:solid;border-color:var(--bd3);background:rgba(201,168,76,.04)}
+.eq-slot.full:hover{border-color:var(--gold)}
+.eq-slot-lbl{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--parch3)}
+.eq-slot-ico{font-size:1.3rem}
+.eq-slot-name{font-family:'Cinzel',serif;font-size:.56rem;color:var(--gold2);letter-spacing:.04em}
+.eq-slot-bonus{font-size:.62rem;color:var(--grn);font-style:italic}
+.eq-slot-empty{font-size:.62rem;color:var(--bd2);font-style:italic}
+.pack-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:.75rem}
+.pk-slot{background:var(--bg2);border:1px dashed var(--bd2);padding:.5rem .4rem;text-align:center;min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem}
+.pk-slot.full{border-style:solid;border-color:var(--bd3)}
+.pk-ico{font-size:1.1rem}.pk-name{font-family:'Cinzel',serif;font-size:.48rem;color:var(--gold2);line-height:1.3}
+.pk-use{background:var(--bg3);border:1px solid var(--bd2);color:var(--parch2);font-family:'Cinzel',serif;font-size:.46rem;letter-spacing:.07em;text-transform:uppercase;padding:2px 5px;cursor:pointer;margin-top:.15rem;transition:all .15s;width:100%}
+.pk-use:hover{border-color:var(--gold);color:var(--gold)}
+.inv-list{display:flex;flex-direction:column;gap:.38rem;max-height:220px;overflow-y:auto}
+.inv-row{display:flex;align-items:center;gap:.55rem;padding:.45rem .65rem;background:var(--bg2);border:1px solid var(--bd)}
+.inv-ico{font-size:1rem;flex-shrink:0}
+.inv-info{flex:1}
+.inv-name{font-family:'Cinzel',serif;font-size:.62rem;color:var(--gold);letter-spacing:.04em}
+.inv-desc{font-size:.66rem;color:var(--parch2);font-style:italic;margin-top:1px}
+.inv-btn{background:var(--crim);border:1px solid var(--crim2);color:var(--gold);font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .55rem;cursor:pointer;transition:all .18s;white-space:nowrap;flex-shrink:0}
+.inv-btn:hover{background:var(--crim2);border-color:var(--gold)}
+.inv-btn.pk{background:var(--bg3);border-color:var(--bd3);color:var(--parch2)}.inv-btn.pk:hover{border-color:var(--gold);color:var(--gold)}
+.epanel{text-align:center;padding:.4rem}
+.esym{font-size:2.5rem;margin-bottom:.6rem;display:block}
+.etitle{font-family:'Cinzel Decorative',serif;font-size:clamp(.95rem,3.5vw,1.3rem);color:var(--gold);margin-bottom:.55rem}
+.etxt{font-style:italic;line-height:1.9;color:var(--parch);margin-bottom:.9rem;font-size:clamp(.86rem,2.2vw,.96rem)}
+.lq{font-style:italic;color:var(--parch2);font-size:.84rem;text-align:center;border-left:2px solid var(--crim);padding:.4rem .8rem;margin:.85rem 0;line-height:1.6}
+.fbadge{display:inline-flex;align-items:center;gap:.4rem;background:var(--bg3);border:1px solid var(--bd2);padding:.28rem .62rem;font-family:'Cinzel',serif;font-size:.65rem;color:var(--gold);letter-spacing:.06em;margin-bottom:.7rem}
+.ilore{font-style:italic;color:var(--parch2);line-height:1.88;font-size:clamp(.85rem,2.2vw,.93rem);margin-bottom:.85rem}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:.85rem}
+@media(max-width:480px){.fgrid{grid-template-columns:repeat(2,1fr)}}
+.fc{border:1px solid var(--bd);background:var(--bg2);padding:clamp(.65rem,3vw,.95rem) .65rem;cursor:pointer;text-align:center;transition:all .22s}
+.fc:hover{border-color:var(--gold);background:var(--bg3);transform:translateY(-2px)}
+.fi{font-size:clamp(1.4rem,4.5vw,1.8rem);margin-bottom:.3rem;display:block}
+.fn{font-family:'Cinzel',serif;font-size:clamp(.58rem,1.7vw,.75rem);font-weight:600;color:var(--gold);letter-spacing:.04em}
+.fd{font-size:clamp(.62rem,1.7vw,.74rem);color:var(--parch2);margin-top:.22rem;line-height:1.3;font-style:italic}
+.fsl{font-family:'Cinzel',serif;font-size:.48rem;color:var(--steel);letter-spacing:.07em;margin-top:.4rem;border-top:1px solid var(--bd);padding-top:.32rem}
+.niw{margin-top:.95rem;display:flex;gap:.45rem;flex-wrap:wrap}
+.ni{flex:1;min-width:140px;background:var(--bg2);border:1px solid var(--bd2);color:var(--parch);font-family:'Cinzel',serif;font-size:.86rem;padding:.62rem .82rem;outline:none;letter-spacing:.04em;transition:border-color .2s}
+.ni:focus{border-color:var(--gold)}.ni::placeholder{color:var(--bd2)}
+.btnp{background:var(--crim);border:1px solid var(--crim2);color:var(--gold);font-family:'Cinzel',serif;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.62rem 1rem;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
 .btnp:hover{background:var(--crim2);border-color:var(--gold)}
-.btnp:disabled{opacity:.4;cursor:not-allowed}
-.btns{
-  background:transparent;border:1px solid var(--bd2);color:var(--parch2);
-  font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
-  padding:.55rem 1rem;cursor:pointer;transition:all .2s;display:block;margin-top:.8rem
-}
+.btns{background:transparent;border:1px solid var(--bd2);color:var(--parch2);font-family:'Cinzel',serif;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;padding:.45rem .85rem;cursor:pointer;transition:all .2s;display:block;margin-top:.65rem}
 .btns:hover{border-color:var(--gold);color:var(--gold)}
-
-/* LOADING */
-.lw{text-align:center;padding:2.5rem 1rem}
-.skull{font-size:2.2rem;animation:ps 1.5s ease-in-out infinite;display:block;margin-bottom:.7rem}
-@keyframes ps{0%,100%{opacity:.4;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
-.ltxt{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;animation:fl 2s ease-in-out infinite;color:var(--parch2)}
-@keyframes fl{0%,100%{opacity:1}50%{opacity:.55}}
-
-/* NOTIF */
-#narea{min-height:26px;display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin:.4rem 0;align-items:center}
-.notif{display:inline-block;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.08em;padding:2px 6px;animation:fu 2.5s ease forwards}
-.np{color:#5ccc5c;background:rgba(92,204,92,.1)}
-.nn{color:#cc5c5c;background:rgba(204,92,92,.1)}
-@keyframes fu{0%{opacity:0;transform:translateY(6px)}15%{opacity:1;transform:translateY(0)}80%{opacity:1}100%{opacity:0;transform:translateY(-6px)}}
-
-/* ENDING */
-.epanel{text-align:center;padding:.5rem}
-.esym{font-size:2.8rem;margin-bottom:.8rem;display:block}
-.etitle{font-family:'Cinzel Decorative',serif;font-size:clamp(1.1rem,4vw,1.4rem);color:var(--gold);margin-bottom:.7rem}
-.etxt{font-style:italic;line-height:1.85;color:var(--parch);margin-bottom:1.2rem;font-size:clamp(.9rem,2.5vw,1rem)}
-
-/* LORE */
-.lq{font-style:italic;color:var(--parch2);font-size:.88rem;text-align:center;border-left:2px solid var(--crim);padding:.5rem .9rem;margin:1.2rem 0;line-height:1.6}
-
-/* COUNTER */
-.sc{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.18em;color:var(--bd2);text-align:right;text-transform:uppercase;margin-bottom:.5rem}
-
-/* BADGE */
-.fbadge{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg3);border:1px solid var(--bd2);padding:.35rem .7rem;font-family:'Cinzel',serif;font-size:.7rem;color:var(--gold);letter-spacing:.06em;margin-bottom:.9rem}
-.intro-lore{font-style:italic;color:var(--parch2);line-height:1.85;font-size:.95rem;margin-bottom:1rem}
-
-/* OUTCOME PREVIEW */
-.cstat{font-size:.7rem;color:var(--parch2);margin-top:.3rem;font-family:'Cinzel',serif;letter-spacing:.05em}
-.cstat span{margin-right:.4rem}
-.cstat .pos{color:#7ccc7c}.cstat .neg{color:#cc7c7c}
 </style>
 </head>
 <body>
 <div id="app">
   <header class="hdr">
-    <span class="aquila">☩</span>
+    <span class="aquila">&#9769;</span>
     <h1 class="t-main">Warhammer 40,000</h1>
     <p class="t-sub">Chroniques de l'Imperium</p>
   </header>
   <main id="main"></main>
 </div>
+<div id="dice-overlay">
+  <div class="dice-box">
+    <div class="dice-title" id="dice-title">Lancer du Destin</div>
+    <div id="dface">?</div>
+    <div class="dlabel">D10</div>
+    <div id="dresult"></div>
+    <table class="dtable" id="dtable">
+      <tr data-lo="1"  data-hi="1" ><td>1</td>  <td>FUMBLE &mdash; Catastrophe</td></tr>
+      <tr data-lo="2"  data-hi="3" ><td>2&ndash;3</td><td>RATE &mdash; Echec et consequences</td></tr>
+      <tr data-lo="4"  data-hi="6" ><td>4&ndash;6</td><td>TOUCHE &mdash; Succes normal</td></tr>
+      <tr data-lo="7"  data-hi="8" ><td>7&ndash;8</td><td>SOLIDE &mdash; Bon resultat</td></tr>
+      <tr data-lo="9"  data-hi="9" ><td>9</td>  <td>CRITIQUE &mdash; Succes exceptionnel</td></tr>
+      <tr data-lo="10" data-hi="10"><td>10</td> <td>MAITRISE &mdash; Resultat legendaire</td></tr>
+    </table>
+  </div>
+</div>
+<div id="sheet-overlay"><div class="sh-inner" id="sh-content"></div></div>
 
 <script>
-/* ═══════════════════════════════════════
-   STATE
-═══════════════════════════════════════ */
-const S = {
-  phase:'intro',faction:null,fdata:null,name:'',
-  hp:100,res:100,honor:50,
-  act:0,maxActs:6,
-  usedScenes:[],
-  choices:[]
+var S = {
+  faction:null, fdata:null, name:'',
+  hp:100, maxHp:100, res:100, honor:50, xp:0,
+  baseAtk:4, baseDef:2,
+  equip:{weapon:null,armor:null,head:null},
+  pack:[null,null,null,null],
+  inventory:[],
+  act:0, maxActs:8, pageNum:1,
+  usedScenes:[], currentScene:null, curNar:'',
+  pendingDeltas:null,
+  ttsOn:false, ttsSpeed:0.9, isSpeaking:false, autoRead:false
 };
 
-/* ═══════════════════════════════════════
-   FACTIONS
-═══════════════════════════════════════ */
-const FACTIONS=[
-  {id:'marine',icon:'⚔️',name:'Space Marine',chapter:'Ultramarines',
-   desc:'Champion de l\'Imperium, forgé dans l\'acier sacré',
-   sl:'FORCE · ENDURANCE · HONNEUR',
-   reslabel:'Munitions',startHonor:70,
-   lore:'Un Astartes des Ultramarines, fils de Roboute Guilliman.'},
-  {id:'inquisitor',icon:'👁',name:'Inquisiteur',chapter:'Ordo Hereticus',
-   desc:'Chasseur d\'hérétiques, bras de la purification',
-   sl:'RUSE · PSYCHÉ · AUTORITÉ',
-   reslabel:'Énergie Psyker',startHonor:50,
-   lore:'Mandaté par le Haut Capitulaire pour purifier trois secteurs.'},
-  {id:'guard',icon:'🛡',name:'Garde Impérial',chapter:'8ème Cadian',
-   desc:'Soldat mortel face à l\'ennemi immortel',
-   sl:'COURAGE · SACRIFICE · NOMBRE',
-   reslabel:'Ravitaillement',startHonor:50,
-   lore:'Vétéran cadien, vingt campagnes au service du Trône Doré.'},
-  {id:'techpriest',icon:'⚙️',name:'Prêtre-Technicien',chapter:'Adeptus Mechanicus',
-   desc:'Serviteur du Dieu-Machine, quêteur de savoir perdu',
-   sl:'LOGIQUE · OMNISSIAH · BIONIQUE',
-   reslabel:'Énergie Mechadendrite',startHonor:40,
-   lore:'Magos de Mars, en quête de technologie Perdue sur des mondes maudits.'},
-  {id:'wolves',icon:'🐺',name:'Space Wolf',chapter:'Loups de Fenris',
-   desc:'Guerrier barbare béni par la marque de Russ',
-   sl:'FÉROCITÉ · CLAN · INSTINCT',
-   reslabel:'Rage Bestiale',startHonor:60,
-   lore:'Long Fang des Loups de Fenris, portant la cicatrice du Canis Helix.'},
-  {id:'chaos',icon:'🌀',name:'Guerrier du Chaos',chapter:'Légion Renégate',
-   desc:'Renégat glorifié par les Dieux de la Ruine',
-   sl:'CORRUPTION · PUISSANCE · MALICE',
-   reslabel:'Faveur Chaotique',startHonor:20,
-   lore:'Astartes renégat, maudit et exalté par les Pouvoirs du Warp.'}
+var ITEMS = {
+  bolter:   {id:'bolter',   ico:'&#128299;',name:'Bolter Sacré',      desc:'Arme standard Astartes',        slot:'weapon',atk:3,def:0},
+  hache:    {id:'hache',    ico:'&#129683;',name:'Hache de Fenris',    desc:'Arme ancestrale de Fenris',      slot:'weapon',atk:4,def:0},
+  epee_plas:{id:'epee_plas',ico:'&#9889;',  name:'Epee-Plasma Benie', desc:'Runes de benediction gravees',   slot:'weapon',atk:5,def:0},
+  bolter2:  {id:'bolter2',  ico:'&#128299;',name:'Bolter Recupere',   desc:'Pris sur un champion tombe',     slot:'weapon',atk:4,def:0},
+  armure1:  {id:'armure1',  ico:'&#128737;',name:'Armure Renforcee',  desc:'Plaques acier supplementaires',  slot:'armor', atk:0,def:2,hpBonus:15},
+  armure2:  {id:'armure2',  ico:'&#128737;',name:'Armure Ceramite',   desc:'Alliage imperial avancé',        slot:'armor', atk:0,def:3,hpBonus:20},
+  casque:   {id:'casque',   ico:'&#9937;',  name:'Casque Astartes',   desc:'Vision et filtres air',          slot:'head',  atk:0,def:1},
+  relique:  {id:'relique',  ico:'&#127942;',name:'Relique du Chapitre',desc:'Benie par un Chapelain',        slot:'trinket',honorBonus:10},
+  mandat:   {id:'mandat',   ico:'&#128220;',name:'Mandat Imperial',   desc:'Autorite absolue',               slot:'trinket',honorBonus:5},
+  kit_med:  {id:'kit_med',  ico:'&#128138;',name:'Kit Medical',       desc:'Soin urgence +30 PV',            slot:'consumable',healHp:30},
+  kit_mecha:{id:'kit_mecha',ico:'&#128295;',name:'Kit Mechadendrite', desc:'Repare armures +20 PV',          slot:'consumable',healHp:20},
+  grenades: {id:'grenades', ico:'&#129512;',name:'Grenades Krak x3',  desc:'Explosif anti-blindage',         slot:'consumable',healHp:0},
+  munitions:{id:'munitions',ico:'&#128230;',name:'Munitions Urgence', desc:'Réservé de combat +25 RES',      slot:'trinket',resBonus:25},
+  donnees:  {id:'donnees',  ico:'&#128190;',name:'Donnees Tactiques', desc:'Cartes et renseignements',       slot:'trinket',xpBonus:20},
+  coords:   {id:'coords',   ico:'&#128205;',name:'Coordonnees Secretes',desc:'Position objectif critique',  slot:'trinket',xpBonus:30},
+  dossiers: {id:'dossiers', ico:'&#128203;',name:'Dossiers Inquisition',desc:'Révélé intentions ennemies',  slot:'trinket'}
+};
+
+var FACTIONS = [
+  {id:'marine',    ico:'&#9876;', name:'Space Marine',     chapter:'Ultramarines',
+   desc:'Guerrier supreme, fils de Guilliman',sl:'FORCE &middot; ENDURANCE &middot; HONNEUR',
+   reslabel:'Munitions',startHonor:70,startHp:110,baseAtk:7,baseDef:5,startItem:'bolter',
+   lore:'Frere Astartes des Ultramarines. Votre armure porte les cicatrices de cent batailles.'},
+  {id:'inquisitor',ico:'&#128065;',name:'Inquisiteur',      chapter:'Ordo Hereticus',
+   desc:'Bras de la purification',sl:'Rusé &middot; PSYCHE &middot; AUTORITE',
+   reslabel:'Energie Psyker',startHonor:50,startHp:90,baseAtk:5,baseDef:3,startItem:'mandat',
+   lore:'Mandate par le Haut Capitulaire. Votre Rosette vous donne autorite absolue.'},
+  {id:'guard',     ico:'&#128737;',name:'Garde Imperial',   chapter:'8eme Cadian',
+   desc:'Soldat mortel face a l\'immortel',sl:'COURAGE &middot; SACRIFICE &middot; NOMBRE',
+   reslabel:'Ravitaillement',startHonor:50,startHp:95,baseAtk:4,baseDef:4,startItem:'grenades',
+   lore:'Sergent veteran de vingt campagnes. Un humain qui refuse de mourir.'},
+  {id:'techpriest',ico:'&#9881;',  name:'Pretre-Technicien',chapter:'Adeptus Mechanicus',
+   desc:'Serviteur du Dieu-Machine',sl:'LOGIQUE &middot; OMNISSIAH &middot; BIONIQUE',
+   reslabel:'Energie Mechadendrite',startHonor:40,startHp:85,baseAtk:4,baseDef:5,startItem:'kit_mecha',
+   lore:'Magos 7-Delta. Soixante pour cent bionique. Vous calculez vos chances de survie.'},
+  {id:'wolves',    ico:'&#128062;',name:'Space Wolf',        chapter:'Loups de Fenris',
+   desc:'Barbare beni par la marqué de Russ',sl:'FEROCITE &middot; CLAN &middot; INSTINCT',
+   reslabel:'Rage Bestiale',startHonor:60,startHp:100,baseAtk:8,baseDef:3,startItem:'hache',
+   lore:'Vorn Ironfang, Long Fang des Loups de Fenris. La rage est une arme.'},
+  {id:'chaos',     ico:'&#127752;',name:'Guerrier du Chaos', chapter:'Legion Renégate',
+   desc:'Renégat glorifie par les Dieux',sl:'CORRUPTION &middot; PUISSANCE &middot; MALICE',
+   reslabel:'Faveur Chaotique',startHonor:20,startHp:95,baseAtk:7,baseDef:4,startItem:'relique',
+   lore:'Kael le Maudit. Ancien Astartes. Le Warp murmuré dans votre esprit.'}
 ];
 
-/* ═══════════════════════════════════════
-   SCENARIO ENGINE
-   Each scenario: id, tags (faction ids or 'all'), phase (early/mid/late/finale),
-   title, narrative(state), choices[]
-   Choice: text, tag, hp, res, honor, outcome (string appended after)
-═══════════════════════════════════════ */
-const SCENES=[
+function getAtk(){var w=S.equip.weapon;return S.baseAtk+(w?w.atk||0:0);}
+function getDef(){var a=S.equip.armor,h=S.equip.head;return S.baseDef+(a?a.def||0:0)+(h?h.def||0:0);}
+function getMaxHp(){var a=S.equip.armor;return S.maxHp+(a?a.hpBonus||0:0);}
+function clamp(v,lo,hi){lo=lo===undefined?0:lo;hi=hi===undefined?100:hi;return Math.min(hi,Math.max(lo,v));}
+function rand(a){return a[Math.floor(Math.random()*a.length)];}
+function setMain(h){document.getElementById('main').innerHTML=h;}
+function mkpanel(h){return '<div class="panel"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div>'+h+'</div>';}
+function mkdiv(i){return '<div class="div"><span>'+(i||'&#10022;')+'</span></div>';}
 
-/* ══ EARLY (act 1-2) ══ */
-{id:'tyranid_vanguard',tags:['marine','guard','wolves','all'],phase:'early',
- title:"L'Avant-garde de la Ruche",
- nar:s=>`Les capteurs détectent des biomorphes Tyranides en approche — des Gargouillers par milliers, précédant l'essaim principal. La ville de Port-Méridian brûle à l'horizon. ${s.name}, vos ordres ? Le Général Vorkan demande si vous tenez le pont ou repliez les civils.`,
+function renderStats(){
+  var hn=S.honor>60?'Gloire':S.honor>30?'Honneur':'Decheance';
+  var rl=S.fdata?S.fdata.reslabel:'Ressources';
+  var mhp=getMaxHp(),hp=clamp(S.hp,0,mhp);
+  var hpPct=Math.round(hp/mhp*100);
+  return '<div id="sbar">'
+    +'<div class="sb"><span class="sl">Points de Vie</span><span class="sv">'+hp+'/'+mhp+'</span><div class="sbo"><div class="sbi bh" style="width:'+hpPct+'%"></div></div></div>'
+    +'<div class="sb"><span class="sl">'+rl+'</span><span class="sv">'+S.res+'</span><div class="sbo"><div class="sbi br" style="width:'+S.res+'%"></div></div></div>'
+    +'<div class="sb"><span class="sl">'+hn+'</span><span class="sv">'+S.honor+'</span><div class="sbo"><div class="sbi bn" style="width:'+S.honor+'%"></div></div></div>'
+    +'<div class="sb"><span class="sl">XP</span><span class="sv">'+S.xp+'</span><div class="sbo"><div class="sbi bi" style="width:'+Math.min(S.xp,100)+'%"></div></div></div>'
+    +'</div>';
+}
+
+function renderInv(){
+  var b='';
+  if(S.equip.weapon) b+='<span class="ibadge eq">&#9876; '+S.equip.weapon.name+'</span>';
+  if(S.equip.armor)  b+='<span class="ibadge eq">&#128737; '+S.equip.armor.name+'</span>';
+  if(S.equip.head)   b+='<span class="ibadge eq">&#9937; '+S.equip.head.name+'</span>';
+  for(var i=0;i<S.pack.length;i++){if(S.pack[i])b+='<span class="ibadge">'+S.pack[i].ico+' '+S.pack[i].name+'</span>';}
+  return '<div id="inv-bar">'+b+'</div>';
+}
+
+function renderTopBar(){
+  return '<div id="topbar">'
+    +'<button class="tbarbtn fiche" onclick="openSheet()">&#128203; Fiche du Guerrier</button>'
+    +'<button class="tbarbtn" onclick="saveGame()">&#128190; Sauver</button>'
+    +'<button class="tbarbtn" onclick="loadGame()">&#128194; Charger</button>'
+    +'<span id="savemsg2">'+saveStatusText()+'</span>'
+    +'</div>';
+}
+
+function ttsBar(){
+  if(!window.speechSynthesis) return '';
+  return '<div id="ttsbar">'
+    +'<span class="tlbl">Narration</span>'
+    +'<button class="tbtn'+(S.ttsOn?' on':'')+'" id="ttsbtn" onclick="toggleTTS()">'+(S.ttsOn?'&#128266; Voix ON':'&#128263; Voix OFF')+'</button>'
+    +'<button class="tbtn'+(S.autoRead?' on':'')+'" id="autobtn" onclick="toggleAutoRead()" title="Lecture automatique a chaque page">'+(S.autoRead?'&#9654; Auto ON':'&#9654; Auto OFF')+'</button>'
+    +'<select class="spsel" onchange="S.ttsSpeed=parseFloat(this.value)">'
+    +'<option value="0.7">Lent</option><option value="0.9" selected>Normal</option>'
+    +'<option value="1.1">Rapide</option><option value="1.3">Tres rapide</option></select>'
+    +'<button class="tbtn" onclick="stopSpeak()" style="font-size:.5rem">&#9632;</button>'
+    +'<div class="wave h" id="ttswave"><span style="height:6px"></span><span></span><span></span><span></span><span></span></div>'
+    +'</div>';
+}
+
+/* SOUND ENGINE */
+var AC=null;
+function getAC(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)();}catch(e){}}return AC;}
+document.addEventListener('click',function(){getAC();},{once:true});
+
+function snd_pageTurn(){
+  var ac=getAC();if(!ac)return;
+  var len=Math.floor(ac.sampleRate*0.18);
+  var buf=ac.createBuffer(1,len,ac.sampleRate);
+  var d=buf.getChannelData(0);
+  for(var i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,1.5)*0.55;
+  var src=ac.createBufferSource();src.buffer=buf;
+  var f=ac.createBiquadFilter();f.type='bandpass';f.frequency.setValueAtTime(2800,ac.currentTime);f.frequency.linearRampToValueAtTime(800,ac.currentTime+0.16);f.Q.value=0.8;
+  var g=ac.createGain();g.gain.setValueAtTime(0.7,ac.currentTime);g.gain.linearRampToValueAtTime(0,ac.currentTime+0.18);
+  src.connect(f);f.connect(g);g.connect(ac.destination);
+  src.start();src.stop(ac.currentTime+0.2);
+}
+
+function snd_dice(){
+  var ac=getAC();if(!ac)return;
+  var clicks=[0,0.06,0.11,0.15,0.185,0.21];
+  for(var i=0;i<clicks.length;i++){
+    (function(t,last){
+      var o=ac.createOscillator();var g=ac.createGain();
+      o.type='sine';var freq=340+Math.random()*180;
+      o.frequency.setValueAtTime(freq,ac.currentTime+t);
+      o.frequency.exponentialRampToValueAtTime(freq*0.55,ac.currentTime+t+0.04);
+      g.gain.setValueAtTime(0,ac.currentTime+t);
+      g.gain.linearRampToValueAtTime(last?0.55:0.3,ac.currentTime+t+0.005);
+      g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+t+0.055);
+      o.connect(g);g.connect(ac.destination);
+      o.start(ac.currentTime+t);o.stop(ac.currentTime+t+0.06);
+    })(clicks[i],i===clicks.length-1);
+  }
+}
+
+function snd_battle(){
+  var ac=getAC();if(!ac)return;
+  var dur=1.8;
+  var len=Math.floor(ac.sampleRate*dur);
+  var buf=ac.createBuffer(1,len,ac.sampleRate);
+  var bd=buf.getChannelData(0);
+  for(var i=0;i<len;i++){var t=i/ac.sampleRate;bd[i]=(Math.random()*2-1)*0.35*Math.sin(t*22)*Math.max(0,1-t/dur);}
+  var rumble=ac.createBufferSource();rumble.buffer=buf;
+  var lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.value=160;
+  var rg=ac.createGain();rg.gain.setValueAtTime(0.5,ac.currentTime);rg.gain.linearRampToValueAtTime(0,ac.currentTime+dur);
+  rumble.connect(lp);lp.connect(rg);rg.connect(ac.destination);
+  rumble.start();rumble.stop(ac.currentTime+dur);
+  var impacts=[0.05,0.22,0.48,0.71,1.0,1.35];
+  for(var j=0;j<impacts.length;j++){
+    (function(t){
+      var o=ac.createOscillator();var g=ac.createGain();
+      o.type='sawtooth';o.frequency.setValueAtTime(95+Math.random()*60,ac.currentTime+t);
+      o.frequency.exponentialRampToValueAtTime(35,ac.currentTime+t+0.18);
+      g.gain.setValueAtTime(0.45,ac.currentTime+t);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+t+0.22);
+      var dist=ac.createWaveShaper();
+      var c=new Float32Array(256);for(var k=0;k<256;k++)c[k]=Math.tanh((k/128-1)*4);
+      dist.curve=c;
+      o.connect(dist);dist.connect(g);g.connect(ac.destination);
+      o.start(ac.currentTime+t);o.stop(ac.currentTime+t+0.25);
+    })(impacts[j]);
+  }
+}
+
+function snd_damnation(){
+  var ac=getAC();if(!ac)return;
+  var dur=2.5;
+  var freqs=[55,82,110];
+  for(var i=0;i<freqs.length;i++){
+    (function(sf,idx){
+      var o=ac.createOscillator();var g=ac.createGain();
+      o.type=idx===0?'sawtooth':'sine';
+      o.frequency.setValueAtTime(sf,ac.currentTime);
+      o.frequency.exponentialRampToValueAtTime(sf*0.35,ac.currentTime+dur);
+      g.gain.setValueAtTime(0.001,ac.currentTime);
+      g.gain.linearRampToValueAtTime(0.28-idx*0.07,ac.currentTime+0.08);
+      g.gain.linearRampToValueAtTime(0.001,ac.currentTime+dur);
+      var lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.value=200;
+      o.connect(lp);lp.connect(g);g.connect(ac.destination);
+      o.start();o.stop(ac.currentTime+dur+0.1);
+    })(freqs[i],i);
+  }
+  var sting=ac.createOscillator();var sg=ac.createGain();
+  sting.type='square';sting.frequency.setValueAtTime(880,ac.currentTime);
+  sting.frequency.exponentialRampToValueAtTime(220,ac.currentTime+1.2);
+  sg.gain.setValueAtTime(0.001,ac.currentTime);sg.gain.linearRampToValueAtTime(0.12,ac.currentTime+0.05);
+  sg.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+1.2);
+  var hp=ac.createBiquadFilter();hp.type='bandpass';hp.frequency.value=600;hp.Q.value=3;
+  sting.connect(hp);hp.connect(sg);sg.connect(ac.destination);
+  sting.start();sting.stop(ac.currentTime+1.3);
+  var ilen=Math.floor(ac.sampleRate*0.15);
+  var ibuf=ac.createBuffer(1,ilen,ac.sampleRate);
+  var idat=ibuf.getChannelData(0);
+  for(var j=0;j<ilen;j++) idat[j]=(Math.random()*2-1)*Math.pow(1-j/ilen,0.6)*0.7;
+  var isrc=ac.createBufferSource();isrc.buffer=ibuf;
+  var ig=ac.createGain();ig.gain.value=0.55;
+  isrc.connect(ig);ig.connect(ac.destination);
+  isrc.start();isrc.stop(ac.currentTime+0.2);
+}
+
+/* TTS */
+var synt=window.speechSynthesis;
+var voices=[];
+var ttsQueue=[];
+var ttsActive=false;
+
+function loadV(){
+  if(!synt)return;
+  var all=synt.getVoices();
+  var frAll=all.filter(function(v){return v.lang.startsWith('fr');});
+  var maleNames=['thomas','thomas (premium)','nicolas','pierre','henri','guillaume','french male','homme','male'];
+  var male=frAll.filter(function(v){
+    var n=v.name.toLowerCase();
+    return maleNames.some(function(m){return n.indexOf(m)>=0;});
+  });
+  if(male.length){voices=male;}
+  else if(frAll.length){voices=frAll;}
+  else{voices=all;}
+}
+if(synt){loadV();synt.onvoiceschanged=loadV;}
+
+function getBestVoice(){
+  var maleNames=['thomas','thomas (premium)','nicolas','pierre','henri','guillaume','french male','homme'];
+  for(var i=0;i<voices.length;i++){
+    var n=voices[i].name.toLowerCase();
+    if(maleNames.some(function(m){return n.indexOf(m)>=0;}))return voices[i];
+  }
+  var frFR=voices.filter(function(v){return v.lang==='fr-FR';});
+  if(frFR.length)return frFR[0];
+  return voices[0]||null;
+}
+
+function cleanTxt(txt){
+  return txt
+    .replace(/<[^>]*>/g,'')
+    .replace(/&[a-z0-9#]+;/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+// Split text into natural breath-groups for human-paced reading
+function splitSentences(txt){
+  var t=cleanTxt(txt);
+  // Replace paragraph breaks with sentence-ending markers
+  t=t.replace(/\n\n/g,' [P] ');
+  // Split on sentence endings, keeping the punctuation
+  var raw=t.split(/(?<=[.!?])\s+|(?<=\?)\s+|(?<=!)\s+|\[P\]/);
+  var out=[];
+  for(var i=0;i<raw.length;i++){
+    var s=raw[i].trim();
+    if(!s)continue;
+    // If a sentence is very long, break at a natural comma pause
+    if(s.length>120){
+      var halves=s.split(/,\s+(?=\w)/);
+      var buf='';
+      for(var j=0;j<halves.length;j++){
+        buf=buf?(buf+', '+halves[j]):halves[j];
+        if(buf.length>70||j===halves.length-1){out.push(buf.trim());buf='';}
+      }
+    } else {
+      out.push(s);
+    }
+  }
+  return out.filter(function(s){return s.length>1;});
+}
+
+// Speak a queue of sentences with natural gaps
+function speakQueue(sentences, idx){
+  if(!ttsActive||!synt)return;
+  if(idx>=sentences.length){ttsActive=false;S.isSpeaking=false;updWave(false);return;}
+  var s=sentences[idx];
+  // Detect dramatic punctuation for longer pauses
+  var prevEndsWithColon=idx>0&&/[:—]$/.test(sentences[idx-1]);
+  var gap=prevEndsWithColon?320:idx===0?0:120;
+  setTimeout(function(){
+    if(!ttsActive||!synt)return;
+    var u=new SpeechSynthesisUtterance(s);
+    var v=getBestVoice();
+    if(v)u.voice=v;
+    // Vary rate slightly per sentence for naturalness (±0.04)
+    var baseRate=0.84;
+    var jitter=(Math.random()*0.08)-0.04;
+    u.rate=baseRate+jitter;
+    // Slightly higher pitch for short exclamations, lower for long exposition
+    u.pitch=s.length<30?0.88:0.82;
+    u.volume=1;
+    u.onstart=function(){S.isSpeaking=true;updWave(true);};
+    u.onend=function(){
+      // Natural pause between sentences: 80-180ms depending on ending punctuation
+      var pause=s.match(/[.!?]$/)
+        ?(s.match(/[!?]$/)?160:110)
+        :60;
+      setTimeout(function(){speakQueue(sentences,idx+1);},pause);
+    };
+    u.onerror=function(){speakQueue(sentences,idx+1);};
+    synt.speak(u);
+  },gap);
+}
+
+function speak(txt){
+  if((!S.ttsOn&&!S.autoRead)||!synt)return;
+  synt.cancel();
+  ttsActive=true;
+  ttsQueue=splitSentences(txt);
+  if(!ttsQueue.length){ttsActive=false;return;}
+  speakQueue(ttsQueue,0);
+}
+
+function stopSpeak(){
+  ttsActive=false;
+  ttsQueue=[];
+  if(synt){synt.cancel();}
+  S.isSpeaking=false;
+  updWave(false);
+}
+function updWave(a){
+  var w=document.getElementById('ttswave');if(w)w.className='wave'+(a?'':' h');
+  var b=document.getElementById('ttsbtn');
+  if(b){b.className='tbtn'+(S.ttsOn?' on':'');b.innerHTML=S.ttsOn?'&#128266; Voix ON':'&#128263; Voix OFF';}
+  var ab=document.getElementById('autobtn');
+  if(ab){ab.className='tbtn'+(S.autoRead?' on':'');ab.innerHTML=S.autoRead?'&#9654; Auto ON':'&#9654; Auto OFF';}
+}
+function toggleTTS(){
+  S.ttsOn=!S.ttsOn;
+  updWave(false);
+  if(!S.ttsOn){stopSpeak();}
+  else if(S.curNar)speak(S.curNar);
+}
+function toggleAutoRead(){
+  S.autoRead=!S.autoRead;
+  if(S.autoRead&&!S.ttsOn){S.ttsOn=true;}
+  updWave(false);
+  if(!S.autoRead)stopSpeak();
+  else if(S.curNar)speak(S.curNar);
+}
+
+/* DICE */
+function rollD10(){return Math.ceil(Math.random()*10);}
+function diceCategory(r){
+  if(r===1) return {cat:'FUMBLE',  good:false,crit:false,fumble:true};
+  if(r<=3)  return {cat:'RATE',    good:false,crit:false,fumble:false};
+  if(r<=6)  return {cat:'TOUCHE',  good:true, crit:false,fumble:false};
+  if(r<=8)  return {cat:'SOLIDE',  good:true, crit:false,fumble:false};
+  if(r===9) return {cat:'CRITIQUE',good:true, crit:true, fumble:false};
+  return           {cat:'MAITRISE',good:true, crit:true, fumble:false};
+}
+function animDice(result,cb){
+  var el=document.getElementById('dface');if(!el){if(cb)cb();return;}
+  var steps=[60,60,65,70,80,95,115,140,175,220,280,360];
+  var i=0;el.className='rolling';el.style.color='var(--parch2)';
+  function step(){
+    if(i<steps.length-1){el.textContent=Math.ceil(Math.random()*10);setTimeout(step,steps[i++]);}
+    else{el.textContent=result;el.className='land';el.style.color='var(--gold2)';if(cb)setTimeout(cb,500);}
+  }
+  step();
+}
+function highlightDice(r){
+  document.querySelectorAll('#dtable tr').forEach(function(tr){
+    tr.className=(r>=parseInt(tr.dataset.lo)&&r<=parseInt(tr.dataset.hi))?'dactive':'';
+  });
+}
+function showDice(label,cb){
+  var ov=document.getElementById('dice-overlay');
+  var df=document.getElementById('dface');var dr=document.getElementById('dresult');
+  var dt=document.getElementById('dice-title');
+  if(dt)dt.textContent=label||'Lancer du Destin';
+  if(df){df.textContent='?';df.className='';df.style.color='var(--parch2)';}
+  if(dr)dr.textContent='';
+  document.querySelectorAll('#dtable tr').forEach(function(tr){tr.className='';});
+  ov.className='show';
+  setTimeout(function(){
+    snd_dice();
+    var r=rollD10();
+    animDice(r,function(){
+      var cat=diceCategory(r);
+      highlightDice(r);
+      if(dr)dr.textContent=r+' \u2014 '+cat.cat;
+      setTimeout(function(){ov.className='';if(cb)cb(r,cat);},1400);
+    });
+  },300);
+}
+
+/* INVENTORY */
+function addItem(itemId){
+  var it=ITEMS[itemId];if(!it)return;
+  if(it.slot==='weapon'&&!S.equip.weapon){S.equip.weapon=it;applyBonus(it);return;}
+  if(it.slot==='armor' &&!S.equip.armor) {S.equip.armor=it; applyBonus(it);return;}
+  if(it.slot==='head'  &&!S.equip.head)  {S.equip.head=it;  applyBonus(it);return;}
+  var pi=S.pack.indexOf(null);
+  if(pi>=0){S.pack[pi]=it;applyBonus(it);return;}
+  S.inventory.push(it);applyBonus(it);
+}
+function applyBonus(it){
+  if(it.resBonus)  S.res=clamp(S.res+it.resBonus);
+  if(it.xpBonus)   S.xp+=it.xpBonus;
+  if(it.honorBonus)S.honor=clamp(S.honor+it.honorBonus);
+}
+function stripAll(){
+  S.equip={weapon:null,armor:null,head:null};
+  S.pack=[null,null,null,null];S.inventory=[];
+  S.hp=clamp(S.hp,0,S.maxHp);
+  snd_damnation();
+}
+function equipItem(idx){
+  var it=S.inventory[idx];if(!it)return;
+  var old=S.equip[it.slot];S.equip[it.slot]=it;S.inventory.splice(idx,1);
+  if(old)S.inventory.push(old);openSheet();
+}
+function unequip(slot){var it=S.equip[slot];if(!it)return;S.equip[slot]=null;S.inventory.push(it);openSheet();}
+function putInPack(idx){var it=S.inventory[idx];if(!it)return;var pi=S.pack.indexOf(null);if(pi<0)return;S.pack[pi]=it;S.inventory.splice(idx,1);openSheet();}
+function unpack(pi){var it=S.pack[pi];if(!it)return;S.pack[pi]=null;S.inventory.push(it);openSheet();}
+function usePack(pi){var it=S.pack[pi];if(!it||!it.healHp)return;S.hp=clamp(S.hp+it.healHp,0,getMaxHp());S.pack[pi]=null;openSheet();}
+
+/* CHARACTER SHEET */
+function openSheet(){
+  var ov=document.getElementById('sheet-overlay');ov.className='show';
+  var atk=getAtk(),def=getDef(),mhp=getMaxHp();
+  var slots=[{key:'weapon',lbl:'&#9876; Arme'},{key:'armor',lbl:'&#128737; Armure'},{key:'head',lbl:'&#9937; Tete'}];
+  var eqHtml=slots.map(function(sd){
+    var it=S.equip[sd.key];
+    if(it){
+      var b='';if(it.atk)b+='+'+it.atk+' ATK ';if(it.def)b+='+'+it.def+' DEF ';if(it.hpBonus)b+='+'+it.hpBonus+' PV max';
+      return '<div class="eq-slot full" onclick="unequip(\''+sd.key+'\')" title="Cliquer pour desequiper">'
+        +'<div class="eq-slot-lbl">'+sd.lbl+'</div><div class="eq-slot-ico">'+it.ico+'</div>'
+        +'<div class="eq-slot-name">'+it.name+'</div><div class="eq-slot-bonus">'+b.trim()+'</div></div>';
+    }
+    return '<div class="eq-slot"><div class="eq-slot-lbl">'+sd.lbl+'</div><div class="eq-slot-empty">Vide</div></div>';
+  }).join('');
+  var packHtml=S.pack.map(function(it,i){
+    if(it){
+      var canUse=it.slot==='consumable'&&it.healHp>0;
+      return '<div class="pk-slot full"><div class="pk-ico">'+it.ico+'</div><div class="pk-name">'+it.name+'</div>'
+        +(canUse?'<button class="pk-use" onclick="usePack('+i+')">Utiliser</button>':'')
+        +'<button class="pk-use" onclick="unpack('+i+')" style="margin-top:2px">Retirer</button></div>';
+    }
+    return '<div class="pk-slot"><div style="color:var(--bd2);font-size:.62rem;font-style:italic">Vide</div></div>';
+  }).join('');
+  var invHtml='';
+  if(S.inventory.length){
+    invHtml=S.inventory.map(function(it,i){
+      var canEq=it.slot==='weapon'||it.slot==='armor'||it.slot==='head';
+      var canPk=it.slot==='consumable'||it.slot==='trinket';
+      var b=it.desc;if(it.atk)b+=' +'+it.atk+' ATK';if(it.def)b+=' +'+it.def+' DEF';if(it.hpBonus)b+=' +'+it.hpBonus+' PV';if(it.healHp)b+=' Soin '+it.healHp;
+      return '<div class="inv-row"><span class="inv-ico">'+it.ico+'</span>'
+        +'<div class="inv-info"><div class="inv-name">'+it.name+'</div><div class="inv-desc">'+b+'</div></div>'
+        +(canEq?'<button class="inv-btn" onclick="equipItem('+i+')">Equiper</button>':'')
+        +(canPk?'<button class="inv-btn pk" onclick="putInPack('+i+')">Sac</button>':'')
+        +'</div>';
+    }).join('');
+  }else{invHtml='<div style="color:var(--parch3);font-style:italic;font-size:.78rem;padding:.5rem">Inventaire vide</div>';}
+  document.getElementById('sh-content').innerHTML=
+    '<div class="sh-hdr"><div class="sh-title">&#128203; Fiche du Guerrier</div>'
+    +'<button class="sh-close" onclick="closeSheet()">&#10005; Fermer</button></div>'
+    +'<div class="sh-id"><div class="sh-icon">'+(S.fdata?S.fdata.ico:'?')+'</div>'
+    +'<div><div class="sh-name">'+S.name+'</div><div class="sh-faction">'+(S.fdata?S.fdata.name+' &mdash; '+S.fdata.chapter:'')+'</div></div></div>'
+    +'<div class="sh-stats">'
+    +'<div class="sh-stat"><span class="sh-stat-lbl">PV</span><span class="sh-stat-val">'+S.hp+'/'+mhp+'</span></div>'
+    +'<div class="sh-stat"><span class="sh-stat-lbl">Attaque</span><span class="sh-stat-val'+(S.equip.weapon?' up':'')+'">'+atk+'</span></div>'
+    +'<div class="sh-stat"><span class="sh-stat-lbl">Defense</span><span class="sh-stat-val'+((S.equip.armor||S.equip.head)?' up':'')+'">'+def+'</span></div>'
+    +'<div class="sh-stat"><span class="sh-stat-lbl">Honneur</span><span class="sh-stat-val">'+S.honor+'</span></div>'
+    +'</div>'
+    +mkdiv()
+    +'<div class="sh-sec">Equipement actif <span style="font-size:.5rem;color:var(--parch3)">(cliquer pour desequiper)</span></div>'
+    +'<div class="eq-row">'+eqHtml+'</div>'
+    +mkdiv()
+    +'<div class="sh-sec">Sac a dos ('+S.pack.filter(Boolean).length+'/4)</div>'
+    +'<div class="pack-row">'+packHtml+'</div>'
+    +(S.inventory.length?mkdiv()+'<div class="sh-sec">Inventaire</div><div class="inv-list">'+invHtml+'</div>':'')
+    +'<div style="margin-top:1.1rem;text-align:center"><button class="btns" onclick="closeSheet()">Retour a l\'aventure</button></div>';
+}
+function closeSheet(){document.getElementById('sheet-overlay').className='';}
+
+/* SAVE / LOAD */
+var SAVE_KEY='wh40k_v5';
+function saveGame(){
+  var sv={faction:S.faction,name:S.name,hp:S.hp,maxHp:S.maxHp,res:S.res,honor:S.honor,xp:S.xp,
+    baseAtk:S.baseAtk,baseDef:S.baseDef,equip:S.equip,pack:S.pack,inventory:S.inventory,
+    act:S.act,pageNum:S.pageNum,usedScenes:S.usedScenes.slice(),
+    sceneId:S.currentScene?S.currentScene.id:null,at:new Date().toLocaleString('fr-FR')};
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify(sv));showSaveMsg('Sauvegardé OK','var(--grn)');}
+  catch(e){showSaveMsg('Erreur save','var(--blood)');}
+}
+function loadGame(){
+  try{
+    var raw=localStorage.getItem(SAVE_KEY);if(!raw){showSaveMsg('Aucune sauvegardé','var(--blood)');return;}
+    var sv=JSON.parse(raw);
+    S.faction=sv.faction;S.fdata=FACTIONS.filter(function(f){return f.id===sv.faction;})[0];
+    if(!S.fdata){showSaveMsg('Fichier corrompu','var(--blood)');return;}
+    S.name=sv.name;S.hp=sv.hp;S.maxHp=sv.maxHp||100;S.res=sv.res;S.honor=sv.honor;S.xp=sv.xp;
+    S.baseAtk=sv.baseAtk||S.fdata.baseAtk;S.baseDef=sv.baseDef||S.fdata.baseDef;
+    S.equip=sv.equip||{weapon:null,armor:null,head:null};
+    S.pack=sv.pack||[null,null,null,null];S.inventory=sv.inventory||[];
+    S.act=sv.act;S.pageNum=sv.pageNum||1;S.usedScenes=sv.usedScenes||[];S.pendingDeltas=null;
+    var sc=sv.sceneId?SCENES.filter(function(s){return s.id===sv.sceneId;})[0]:null;
+    if(sc){S.currentScene=sc;renderScene(sc,null);}else{S.act--;nextScene(null,null);}
+    showSaveMsg('Chargé: '+sv.at,'var(--grn)');
+  }catch(e){showSaveMsg('Illisible','var(--blood)');}
+}
+function hasSave(){try{return!!localStorage.getItem(SAVE_KEY);}catch(e){return false;}}
+function showSaveMsg(msg,col){
+  var el=document.getElementById('savemsg2');
+  if(el){el.textContent=msg;el.style.color=col;setTimeout(function(){if(el){el.textContent=saveStatusText();el.style.color='';}},3200);}
+}
+function saveStatusText(){
+  try{var r=localStorage.getItem(SAVE_KEY);if(!r)return 'Pas de sauvegardé';var s=JSON.parse(r);return s.name+' Ch.'+s.act+' '+s.at;}
+  catch(e){return 'Pas de sauvegardé';}
+}
+
+/* SCENES */
+var TL={explore:'&#128294; Exploration',combat:'&#9876; Combat',chest:'&#128230; Coffre',lore:'&#128218; Archives',
+  npc:'&#128100; Rencontre',trap:'&#9888; Piégé',event:'&#11088; Evenement',faith:'&#10013; Foi',sacrifice:'&#128148; Sacrifice'};
+var TC={explore:'t-exp',combat:'t-com',chest:'t-che',lore:'t-lor',npc:'t-npc',trap:'t-tra',event:'t-eve',faith:'t-exp',sacrifice:'t-tra'};
+var CC={chest:'cc',npc:'cn',combat:'co',explore:'ce'};
+
+var SCENES=[
+{id:'ruins_entry',phase:'early',tags:['all'],type:'explore',title:'Les Ruines de Valdris-Prime',
+ nar:function(s){var t='Il y a trois semaines, Valdris-Prime était une cite de deux millions d\'ames. Aujourd\'hui : le silence.';t+=' Un silence qui pese sur les poumons comme une dalle de granit.';t+='\n\nVous avancez sur des dalles jonchées de cendres et d\'os calcinés. Les fresques de l\'Emperor ont ete systematiquement mutilées — les yeux creves, les mains arrachees. Ce n\'est pas de la guerre. C\'est du message.';t+='\n\nTrois options s\'ouvrent devant vous. A gauche, une lumière orangee filtre sous une porte et une odeur métallique d\'huile de machine. A droite, des escaliers plongent vers une obscurite complète, comme une gorge ouverte. Et droit devant, dans une grande salle, une silhouette parfaitement immobile... qui ne bouge pas depuis que vous l\'observez. Beaucoup trop immobile pour être vivante. Peut-être.';return t;},
  choices:[
-  {text:"Tenir le pont coûte que coûte — aucun Tyranide ne passe.",tag:'COMBAT',hp:-30,res:-20,honor:+25,
-   out:"Votre résistance brise la première vague. Des centaines de monstres meurent, mais la ligne est jonchée de morts. Le pont tient."},
-  {text:"Installer des pièges et des mines puis se replier en bon ordre.",tag:'TACTIQUE',hp:-10,res:-25,honor:+10,
-   out:"La retraite organisée permet de sauver des milliers de civils. La ville est perdue mais les troupes survivent pour le lendemain."},
-  {text:"Sacrifier l'arrière-garde pour permettre l'évacuation totale.",tag:'SACRIFICE',hp:-20,res:-10,honor:+30,
-   out:"L'arrière-garde meurt jusqu'au dernier. Leur sacrifice est inscrit dans les Annales de Guerre. Les civils sont sauvés."}
+  {text:'Investiguer la lumière orangee.',ico:'&#128294;',type:'chest',hint:'Fouille — recompense possible',hp:-5,res:0,honor:5,xp:10,out:'Un atelier d\'armurier abandonné. Sur l\'établi, un coffre intact. A l\'interieur : une armure renforcee.',loot:'armure1'},
+  {text:'Descendre dans les sous-niveaux obscurs.',ico:'&#128369;',type:'explore',hint:'Danger inconnu',hp:-15,res:-10,honor:5,xp:15,dice:true,out:'Vous chutez dans une chambre secrete. Des caisses de munitions intactes vous entourent.',loot:'munitions',outBad:'La chute est mauvaise. Vous vous relevez en sang dans une cave vide.',outGood:'Atterrissage parfait. Materiel medical intact vous attend.',lootGood:'kit_med'},
+  {text:'Avancer vers la silhouette.',ico:'&#128100;',type:'npc',hint:'Rencontre — allie où ennemi',hp:0,res:0,honor:10,xp:10,out:'Un Garde Imperial blessé. Il vous donne des informations sur les patrouilles ennemies avant de s\'evanouir.'}
  ]},
-
-{id:'chaos_altar',tags:['inquisitor','guard','marine','wolves'],phase:'early',
- title:"L'Autel de l'Abomination",
- nar:s=>`Une salle secrète découverte sous la cathédrale contient un autel dédié à Nurgle. Huit cultistes en prière ne vous ont pas encore vus. Des runes gravées dans le sol pulsent d'une lumière verdâtre maladive. ${s.name}, chaque seconde passée ici corrompt l'air.`,
+{id:'cathedrale',phase:'early',tags:['all'],type:'lore',title:'La Cathedrale du Dernier Souffle',
+ nar:function(s){var t='La cathedrale de Valdris-Prime se dressé encore, comme si elle refusait de mourir avec le reste de la cite.';t+=' Ses vitraux sont en éclats — mais les armatures de plomb sont tordues vers l\'interieur, comme si quelque chose d\'immense avait tenté d\'entrer par les fenêtrès.';t+='\n\nDes symboles de Nurgle ont ete traces au sol. L\'autel principal a ete inversé. Au-dessus, une inscription en gothique ancien : Nous etions ici avant vous. Nous serons ici après vous.';t+='\n\nAu pied de l\'autel, un journal de cuir reste bizarrement intact. Sur un pilier lateral, une épée luit d\'une faible lueur bleue. Et derrière l\'autel retourné, un courant d\'air trahit un passage caché — dont quelqu\'un a tenté de murer l\'entrée a la hate.';return t;},
  choices:[
-  {text:"Ouvrir le feu immédiatement — purifier la salle par le bolter.",tag:'COMBAT',hp:-15,res:-20,honor:+20,
-   out:"Les cultistes meurent avant d'avoir pu réagir. L'autel est profané mais des spores de Nurgle flottent dans l'air. Vous toussez du sang."},
-  {text:"Observer et identifier leur rituel avant d'agir.",tag:'RUSE',hp:-5,res:-5,honor:+5,
-   out:"Votre patience révèle le nom du démon qu'ils invoquent. Cette information sera précieuse contre l'Inquisition."},
-  {text:"Appeler un Psyker pour sceller le site dans le Warp.",tag:'FOI',hp:-10,res:-30,honor:+15,
-   out:"Le Psyker scelle le portail au prix de sa santé mentale. L'autel est neutralisé. Le sacrifice en valait-il la peine ?"}
+  {text:'Lire le journal.',ico:'&#128218;',type:'lore',hint:'Connaissance pure',hp:0,res:0,honor:10,xp:20,out:'Il appartient a un Chapelain. La dernière entrée : les hérétiques étaient parmi eux depuis le debut.'},
+  {text:'Prendre l\'armé abandonnée.',ico:'&#128481;',type:'chest',hint:'Loot garanti',hp:0,res:-5,honor:0,xp:10,out:'Une épée-plasma Astartes legèrement endommagee mais fonctionnelle. Des runes de benediction pulsent dans la lame.',loot:'epee_plas'},
+  {text:'Emprunter le passage secret.',ico:'&#128682;',type:'explore',hint:'Chemin alternatif',hp:-10,res:-5,honor:5,xp:15,dice:true,out:'Les jardins envahis par une vegetation mutante. Une arche gravée de coordonnees.',outBad:'Une creature mutante vous attaque. Vous la repoussez mais saignez.',outGood:'Le passage debouche sur une caché d\'armes.',lootGood:'coords'}
  ]},
-
-{id:'ork_waaagh',tags:['marine','guard','wolves'],phase:'early',
- title:"WAAAGH ! — La Marée Verte",
- nar:s=>`Des milliers d'Orks déferlent sur la plaine de Volkus IV en hurlant leur guerre sauvage. Leurs Squigs bondissent en avant tandis que les Kans d'Attaque pilonnent les positions fortifiées. ${s.name}, la vague verte sera là dans dix minutes.`,
+{id:'armory_cache',phase:'early',tags:['all'],type:'chest',title:'La Caché d\'Armurier',
+ nar:function(s){var t='Le panneau coulissant n\'aurait jamais ete trouve sans l\'instinct du guerrier — où du destin.';t+=' Derrière, une armurerie de fortune constituee piece par piece, en secret, pendant des mois. Des semaines de préparation pour une urgence qui n\'est manifestement jamais venue.';t+='\n\nDes crochets muraux. Des outils. Et sur l\'établi central, une caisse métallique munie d\'une serrure a combinaison numerique gravée de symboles imperiaux anciens — le genre qu\'on apprend sur Terra. Quelqu\'un de haut place a préparé cela. Pour qui ? Pourquoi ?';return t;},
  choices:[
-  {text:"Charger dans un assaut en coin pour décapiter la hiérarchie Ork.",tag:'COMBAT',hp:-25,res:-15,honor:+20,
-   out:"Vous tuez le Nob chef. Les Orks, privés de meneur, combattent entre eux. Le WAAAGH se désintègre dans la confusion."},
-  {text:"Tenir la ligne défensive avec artillerie lourde.",tag:'TACTIQUE',hp:-15,res:-30,honor:+10,
-   out:"L'artillerie décime les rangs ennemis. La défense tient, mais les munitions sont quasi épuisées pour la prochaine bataille."},
-  {text:"Infiltrer le camp Ork et saboter les Kans d'Attaque.",tag:'RUSE',hp:-10,res:-15,honor:+15,
-   out:"Sabotage réussi. Les Kans explosent dans leurs propres rangs. La confusion parmi les Orks est délicieuse à observer."}
+  {text:'Forcer la serrure — brute forcé.',ico:'&#128170;',type:'chest',hint:'Loot garanti',hp:-5,res:0,honor:0,xp:10,dice:true,out:'La serrure cede. Kit de survie et grenades.',loot:'munitions',outBad:'La serrure declenche une alarme. Des pas se rapprochent.',outGood:'La serrure cede facilement. Armure renforcee a l\'interieur.',lootGood:'armure1'},
+  {text:'Dechiffrer la combinaison symbolique.',ico:'&#128269;',type:'lore',hint:'Loot superieur si reussi',hp:0,res:-5,honor:5,xp:20,dice:true,out:'Les symboles imperiaux anciens. La caisse révélé une armure.',loot:'armure1',outBad:'Les symboles vous echappent. Vous perdez du temps precieux.',outGood:'Combinaison resolue. Armure de ceramite intacte.',lootGood:'armure2'},
+  {text:'Prendre uniquement les armes decrochees.',ico:'&#128481;',type:'explore',hint:'Loot modeste sans risque',hp:0,res:15,honor:0,xp:10,out:'Bolter recharge et deux chargeurs. Simple, efficace.',loot:'bolter2'}
  ]},
-
-{id:'plague_village',tags:['all'],phase:'early',
- title:"Le Village de la Mort Silencieuse",
- nar:s=>`Un village de mille âmes est touché par une maladie inconnue. Certains survivants montrent des mutations — des nœuds de chair, des yeux supplémentaires. Ce n'est pas une maladie naturelle. La marque de Nurgle est présente. Vous avez deux heures avant que le Commissaire de zone n'ordonne la purge totale.`,
+{id:'ork_ambush',phase:'early',tags:['marine','guard','wolves'],type:'combat',title:'Embuscade — Les Dents de la Waaagh',
+ nar:function(s){var t='Ils surgissent des décombres comme si la ville elle-même les vomissait — verts, massifs, hurlants, complètement offenses par votre existence.';t+=' Douze. Non, davantage. Vous comptez encore quand le Nob de tête vous regardé — et vous comprenez que compter était une erreur. Vous auriez déjà du tirer.';t+='\n\nLe Nob est une abomination de ferraille et de muscle. Sa machoire inferieure a ete remplacee par une plaque d\'acier rouille. Quand il parle, ca ressemble a un moteur qui rend l\'ame.\n\nWAAAAGH ! HUMIES MORTS !\n\nIls chargent. Vous avez exactement trois secondes pour décider comment vous preferez risquer votre vie.';return t;},
  choices:[
-  {text:"Chercher des survivants sains et les évacuer avant la purge.",tag:'SACRIFICE',hp:-10,res:-20,honor:+20,
-   out:"Vous sauvez cent vingt-trois personnes encore pures. Le reste brûle. Des visages hantent vos rêves."},
-  {text:"Trouver la source de la contagion et la détruire.",tag:'EXPLORATION',hp:-20,res:-15,honor:+15,
-   out:"Sous le puits du village : un artefact de Nurgle. Vous le brisez au prix d'une exposition aux miasmes. La maladie cesse."},
-  {text:"Brûler le village immédiatement — la purge protège les autres.",tag:'COMBAT',hp:-5,res:-10,honor:-10,
-   out:"Le village brûle en quelques minutes. Efficace. Brutal. Inquisition approuve. Mais votre honneur s'efface légèrement."}
+  {text:'Charger le Nob — tuer la tête.',ico:'&#9876;',type:'combat',hint:'Combat direct',hp:-25,res:-15,honor:20,xp:25,dice:true,out:'Vous percez la ligne. Le Nob tombé. Les Boyz s\'eparpillent.',outBad:'Le Nob vous repoussé violemment. Vous reculez saignant.',outGood:'Vous decimez la hierarchie en dix secondes.',lootGood:'armure1'},
+  {text:'Tenir une position defensive.',ico:'&#128737;',type:'combat',hint:'Défense',hp:-15,res:-20,honor:10,xp:15,dice:true,out:'Vous tenez une porte etroite. Le sol est couvert de vert.',outBad:'La position est debordee par les cotes.',outGood:'Défense parfaite. Vous recuperez leurs munitions.',loot:'munitions'},
+  {text:'Faire exploser une structure sur eux.',ico:'&#128163;',type:'explore',hint:'Tactique — economise les forces',hp:-10,res:-25,honor:15,xp:20,out:'Le batiment s\'effondré sur la majorite du groupe. Trois survivants fuient.'}
  ]},
-
-{id:'mechstrike',tags:['techpriest'],phase:'early',
- title:"Les Forges Maudites de Sigma-9",
- nar:s=>`La forge-station Sigma-9 ne répond plus depuis soixante-douze heures. En y entrant, ${s.name} découvre des Serviteurs errants, les yeux révulsés, attaquant le personnel. Un signal parasite corrompt leurs cortex-processeurs. L'Omnissiah est déshonoré.`,
+{id:'bibliotheque',phase:'mid',tags:['all'],type:'lore',title:'L\'Ultima Bibliotheca',
+ nar:function(s){var t='La bibliotheque est intacte. Complètement intacte.';t+=' Alors que le reste de la forteresse-monastere n\'est que ruines fumantes, les milliers de volumes ici sont en parfait etat. Ce n\'est pas normal. Les orks brulent tout. Le Chaos profane tout. Et pourtant rien n\'a ete touche — comme si quelque chose avait délibérément protégé cet endroit. Mais pourquoi ?';t+='\n\nTrois choses attirent votre attention. Une armoire métallique scellee du sceau de l\'Inquisition — on ne laisse pas ca par hasard. Un Pupitre Tactique holographique qui tourne encore, affichant des positions ennemies. Et dans un coin, une fontaine votive dont l\'eau est d\'un bleu irreel, comme si l\'Emperor lui-même refusait qu\'elle s\'arrêté.';return t;},
  choices:[
-  {text:"Émettre un signal de désactivation d'urgence — arrêter tous les Serviteurs.",tag:'LOGIQUE',hp:-5,res:-25,honor:+15,
-   out:"Les Serviteurs s'éteignent. La forge est silencieuse. Vous retrouvez le nœud de corruption dans les conduits de données."},
-  {text:"Combattre les Serviteurs corrompus un par un pour récupérer leurs données.",tag:'COMBAT',hp:-25,res:-15,honor:+10,
-   out:"Combat brutal contre vos propres créations. Vos mechadendrites sont endommagées. Mais vous avez récupéré des données précieuses."},
-  {text:"Identifier et supprimer le signal parasite à la source.",tag:'EXPLORATION',hp:-10,res:-20,honor:+20,
-   out:"Dans le cœur de la forge, un Cogitator infecté par un virus Necron diffuse le signal. Vous le purgez. Sigma-9 est sauvée."}
+  {text:'Crocheter l\'armoire de l\'Inquisition.',ico:'&#128274;',type:'chest',hint:'Risque — recompense secrete',hp:0,res:-10,honor:-10,xp:15,dice:true,out:'Des rapports classifies et un artefact xenos garde secret.',loot:'dossiers',outBad:'Un mécanisme libéré du gaz paralysant. Vous vous relevez dépouillé.',rob:true,outGood:'L\'armoire révélé aussi une relique d\'armure benie.',lootGood:'relique'},
+  {text:'Etudier le Pupitre Tactique.',ico:'&#128506;',type:'explore',hint:'Ameliore les prochains combats',hp:0,res:-5,honor:10,xp:20,out:'Deux positions d\'embuscade ennemie identifiees. La connaissance est une armure.',loot:'donnees'},
+  {text:'Boire a la fontaine votive.',ico:'&#128167;',type:'event',hint:'Soin garanti',hp:25,res:0,honor:15,xp:10,out:'L\'eau benie brule comme du feu sacré. Vos blessures se referment. Un calme profond s\'installé.'}
  ]},
-
-{id:'chaos_temptation',tags:['chaos'],phase:'early',
- title:"L'Appel de Tzeentch",
- nar:s=>`Un Herald de Tzeentch vous offre une vision : la carte de l'ennemi, tous ses plans dévoilés — mais en échange, vous devez ouvrir un Portail du Warp dans une ville Impériale peuplée. La tentation est réelle. Le pouvoir, immédiat.`,
+{id:'fallen_champion',phase:'mid',tags:['all'],type:'chest',title:'Le Champion Tombé',
+ nar:function(s){var t='Il avait choisi ce couloir avec soin. Dos au mur, face a l\'unique entrée — les ennemis seraient forces d\'arriver un par un. C\'était un bon plan.';t+='\n\nLes huit cadavres autour de lui confirment qu\'il a fonctionne... jusqu\'au bout. Jusqu\'au neuvieme. Celui qui a eu raison de lui. Vous trouvez la blessure fatale : un couteau dans le dos. Il y avait un dixieme adversaire. Quelqu\'un qui savait attendre.';t+='\n\nSon médaillon : Frère Aldric, IVe Compagnie. Son équipement est intact. Et dans son vambrace gauche, une lumière clignote — un message chiffre qui n\'a jamais ete transmis.';return t;},
  choices:[
-  {text:"Accepter l'offre — le pouvoir prime sur tout.",tag:'HÉRÉSIE',hp:+10,res:+30,honor:-30,
-   out:"Le Portail s'ouvre. Des démons se déversent sur la ville. Tzeentch rit. Vous avez la carte. Et leur sang sur les mains."},
-  {text:"Refuser et attaquer le Herald.",tag:'COMBAT',hp:-20,res:-10,honor:+15,
-   out:"Le Herald se dissout en tentacules de lumière avant de mourir. Votre résistance vous coûte cher, mais votre âme reste vôtre... pour l'instant."},
-  {text:"Négocier un arrangement moins coûteux.",tag:'RUSE',hp:-5,res:+15,honor:-10,
-   out:"Tzeentch aime les négociateurs. Il vous donne une information partielle. Quelque chose a été donné en échange — vous ne savez pas encore quoi."}
+  {text:'Recuperer son armement.',ico:'&#9876;',type:'chest',hint:'Équipement Astartes',hp:0,res:20,honor:0,xp:15,out:'Son bolter est encore chaud. Grenades intactes. Vous recuperez tout avec respect.',loot:'bolter2'},
+  {text:'Prononcer sa litanie funebre.',ico:'&#128591;',type:'faith',hint:'Honneur — bonus moral',hp:10,res:0,honor:20,xp:15,out:'Vous recitez sa litanie. L\'air change. Vous vous sentez plus fort dans la conviction.'},
+  {text:'Chercher des informations sur sa mission.',ico:'&#128203;',type:'lore',hint:'Renseignement strategique',hp:0,res:0,honor:10,xp:25,out:'Un message chiffre dans son vambrace : position exacte d\'un generateur ennemi.',loot:'coords'}
  ]},
-
-/* ══ MID (act 3-4) ══ */
-{id:'necron_tomb',tags:['all'],phase:'mid',
- title:"La Tombe qui ne Doit Pas S'Ouvrir",
- nar:s=>`Sous la surface de Khemris VII, une tombe Necron pulse d'énergie hyperchromatique. Les archéologues de l'Adeptus Mechanicus ont déclenché par mégarde le protocole d'éveil. Des Guerriers Immortels se dressent un par un dans la pénombre verte. ${s.name}, la tombe entière se réveille autour de vous.`,
+{id:'explosive_trap',phase:'mid',tags:['all'],type:'trap',title:'Zone Piégée',
+ nar:function(s){var t='Votre pied s\'immobilise a un centimetre du sol.';t+=' L\'instinct du guerrier — qu\'on acquiert dans le sang de cent batailles — vous arrêté net.';t+='\n\nLe fil. Monofilament métallique, quasi-invisible. Il traversé le couloir a exactement hauteur de cheville, angle calcule pour être imperceptible. Les chargés de demolition sont dissimulees derrière les plaques murales. Ce n\'est pas le travail d\'un désespéré. C\'est le travail d\'un ingenieur.';t+='\n\nQuelqu\'un connaissait ces couloirs avant vous. Et la caisse de ravitaillement plus loin — elle est peut-être egalement piégée. Où peut-être pas. La difference peut vous couter la vie.';return t;},
  choices:[
-  {text:"Foncer vers le Pylône Central pour déclencher le retour en dormance.",tag:'EXPLORATION',hp:-25,res:-20,honor:+20,
-   out:"Vous atteignez le Pylône au prix de lourdes blessures. La tombe replonge en sommeil. Dans dix mille ans, ce sera le problème de quelqu'un d'autre."},
-  {text:"Tenir une position défensive et appeler une frappe orbitale.",tag:'TACTIQUE',hp:-15,res:-30,honor:+10,
-   out:"La frappe orbitale vitrifies l'entrée. Les Necrons sont scellés à l'intérieur. Pour l'instant. Le site est marqué sur toutes les cartes."},
-  {text:"Voler la technologie Necron avant de fuir.",tag:'RUSE',hp:-10,res:+20,honor:-15,
-   out:"Vous fuyez avec des artefacts Necron d'une valeur inestimable. L'Inquisition posera des questions. Beaucoup de questions."}
+  {text:'Desamorcer avec precision.',ico:'&#128295;',type:'trap',hint:'Technique — recompense si reussi',hp:-5,res:-10,honor:5,xp:20,dice:true,out:'Vos doigts travaillent avec une precision de chirurgien. La caisse révélé du materiel medical.',loot:'kit_med',outBad:'Le fil résisté. Une mini-explosion vous frappé. Vous vous relevez sonne.',outGood:'Desamorcage parfait. La caisse contient en plus une armure legere.',lootGood:'armure1'},
+  {text:'Lancer un objet sur le fil — couvert.',ico:'&#128233;',type:'trap',hint:'Sécurité — caisse détruite',hp:-20,res:0,honor:0,xp:10,out:'L\'explosion est violente. Éclats. Douleur. La caisse a brule. Vous êtes en vie.'},
+  {text:'Enjamber le fil avec precision.',ico:'&#129462;',type:'trap',hint:'Tout où rien',hp:0,res:0,honor:5,xp:15,dice:true,out:'Votre equilibre est parfait. La caisse contient des donnees tactiques.',loot:'donnees',outBad:'Votre pied effleure le fil. L\'explosion vous projette en arriere. Vous êtes dépouillé.',rob:true,outGood:'Enjambee silencieuse. La caisse contient donnees et materiel medical.',lootGood:'kit_med'}
  ]},
-
-{id:'tau_diplomat',tags:['marine','guard','inquisitor'],phase:'mid',
- title:"L'Ambassadeur du Tau",
- nar:s=>`Un Étherals Tau demande audience. Il offre une trêve locale : les Tau se retirent de trois secteurs en échange de la libération de prisonniers de guerre. C'est contraire à l'idéologie impériale — mais pragmatiquement, cela sauverait des dizaines de milliers de vies.`,
+{id:'survivor_group',phase:'mid',tags:['all'],type:'npc',title:'Les Survivants du Secteur 7',
+ nar:function(s){var t='L\'odeur vous frappé avant de les voir : sueur, peur concentree, et rations imperiales ouvertes depuis trop longtemps.';t+=' Vingt-trois civils, entassés dans une chapelle depuis neuf jours. Des enfants blottis contre leurs parents. Un vieil homme qui tient un aquila en cuivre comme si sa vie en dependait.';t+='\n\nLeur responsable se levé. Soeur Miriam, femme d\'une cinquantaine d\'années, regard direct, voix posée malgre la fatigue écrite sur chaque ligne de son visage. Elle vous regardé avec une franchise qui vous prend par surprise.\n\nVous venez nous sauver ? Où vous venez prendre ce qu\'il nous reste ?';return t;},
  choices:[
-  {text:"Accepter la trêve — la vie des soldats prime sur l'idéologie.",tag:'TACTIQUE',hp:+10,res:+15,honor:-20,
-   out:"Les secteurs sont libérés sans combat. Vos supérieurs sont furieux. Un Inquisiteur vous convoque. Mais vos hommes sont vivants."},
-  {text:"Refuser et attaquer l'ambassadeur sur le champ.",tag:'COMBAT',hp:-20,res:-15,honor:+15,
-   out:"L'ambassadeur mort déclenche une contre-offensive Tau immédiate. Vous avez choisi la guerre. L'Emperor approuve peut-être."},
-  {text:"Simuler l'accord pour obtenir du renseignement, puis agir.",tag:'RUSE',hp:-5,res:+10,honor:-5,
-   out:"L'Étherals révèle des positions avant de réaliser qu'il est trahi. Informations obtenues. Mais la réputation diplomatique est ruinée."}
+  {text:'Les escorter vers la zone securisee.',ico:'&#128694;',type:'sacrifice',hint:'Couteux — honneur maximal',hp:-10,res:-20,honor:30,xp:20,out:'Deux heures d\'escorte sous les tirs. Vingt-trois personnes atteignent la sécurité.'},
+  {text:'Leur donner provisions et instructions.',ico:'&#128506;',type:'explore',hint:'Aide partielle',hp:0,res:-15,honor:15,xp:15,out:'Vous leur laissez la moitie de vos rations et une carte. Vous n\'êtes pas certain qu\'ils y arriveront.'},
+  {text:'Recruter les volontaires capables.',ico:'&#128101;',type:'npc',hint:'Renfort de combat',hp:0,res:0,honor:10,xp:10,out:'Cinq volontaires — dont un ancien Garde mécanicien. Ils connaissent le secteur mieux que vous.'}
  ]},
-
-{id:'psyker_witch',tags:['all'],phase:'mid',
- title:"La Sorcière qui Pleure de Lumière",
- nar:s=>`Une jeune psyker sauvage de douze ans tient à elle seule une forteresse de démons à distance depuis trois jours — sans sommeil, sans nourriture, brûlant de lumière astrographique. Si elle cède, la forteresse tombe et mille soldats meurent. Si elle continue, elle mourra ou pire, basculera dans la damnation.`,
+{id:'warp_anomaly',phase:'mid',tags:['all'],type:'trap',title:'L\'Anomalie du Warp',
+ nar:function(s){var t='La réalité se fissure. Ce n\'est pas une metaphore.';t+='\n\nDans le coin de la salle, la où le mur rencontre le sol, quelque chose a cede dans le tissu de l\'espace normal. Une déchirure. Elle crepite comme de l\'electricite statique a echelle gigantesque. Des couleurs y apparaissent qui n\'ont pas de nom dans le lexique humain.';t+='\n\nDerriere la fissure, des formes — l\'idee de formes, le concept de quelque chose qui veut avoir un corps et n\'en a pas encore. Elles poussent contre la membrane de réalité comme des doigts contre du tissu tendu.\n\nLa fissure grossit. Dans dix minutes elle sera suffisamment large. Et quelque chose derrière elle sait déjà que vous êtes la.';return t;},
  choices:[
-  {text:"La soutenir et chercher un Astropathe pour transférer la charge.",tag:'SACRIFICE',hp:-15,res:-25,honor:+25,
-   out:"Un Astropathe accepte de partager le fardeau. Ils survivent tous les deux, à moitié fous. La forteresse est tenue. Deux âmes brisées."},
-  {text:"L'exécuter pour l'empêcher de basculer côté Chaos.",tag:'FOI',hp:-5,res:-5,honor:-5,
-   out:"Elle meurt dans vos bras, reconnaissante. La forteresse commence à craquer. Vous avez dix minutes pour trouver une autre solution."},
-  {text:"Évacuer la forteresse pendant qu'elle tient encore.",tag:'TACTIQUE',hp:-10,res:-15,honor:+10,
-   out:"L'évacuation sauve huit cents soldats. La forteresse tombe. La psyker disparaît dans une explosion de lumière astrale. Sa fin est inconnue."}
+  {text:'Sceller la fissure par la priere.',ico:'&#10013;',type:'faith',hint:'Efficace si l\'honneur est élève',hp:-10,res:-5,honor:20,xp:25,dice:true,out:'Vous imposez votre volonte contre le Warp. La fissure se referme.',outBad:'La fissure résisté. Quelque chose vous effleure — doigts froids traversant votre ame.',outGood:'La fissure se referme instantanement. Un objet de foi chute au sol.',lootGood:'relique'},
+  {text:'Grenade plasma pour fermer la fissure.',ico:'&#128163;',type:'combat',hint:'Forcé brute',hp:-15,res:-25,honor:5,xp:15,out:'La decharge ionise la fissure et la forcé a se refermer. Brutal. Efficace.'},
+  {text:'Ignorer la fissure et progresser vite.',ico:'&#127939;',type:'explore',hint:'Rapide — la fissure reste',hp:-5,res:0,honor:-10,xp:5,out:'Vous traversez en courant. Quelque chose vous effleure dans la semi-réalité.'}
  ]},
-
-{id:'supply_run',tags:['guard','marine','wolves'],phase:'mid',
- title:"Convoi Sous la Pluie de Missiles",
- nar:s=>`Un convoi de ravitaillement transportant des munitions critiques est encerclé par des traîtres dans les gorges de Vraks. Sans ces munitions, le front sud s'effondre dans quarante-huit heures. Trois routes de dégagement, toutes sous surveillance ennemie.`,
+{id:'vision_emperor',phase:'early',tags:['marine','guard','wolves','inquisitor'],type:'event',title:'La Vision du Trône Dore',
+ nar:function(s){var t='Cela arrive entre deux battements de coeur.';t+='\n\nLa réalité ne disparaît pas — elle devient transparente. A travers elle, vous voyez Terra. Vous voyez le Trône d\'Or. Vous le voyez, Lui — ce squelette de lumière et de volonte absolue, assis sur le siège de Sa propre agonie depuis dix mille ans.';t+='\n\nIl tourne la tête vers vous. Pas de yeux. Pas de visage. Et pourtant vous savez, avec une certitude qui écrasé tout, qu\'Il vous voit. Qu\'Il vous a toujours vu.\n\nLa vision dure peut-être une seconde. Peut-être une éternité. Quand elle se retire, vos joues sont humides. Vous n\'avez aucun souvenir d\'avoir pleure.';return t;},
  choices:[
-  {text:"Percer par la route centrale — attaque directe et violente.",tag:'COMBAT',hp:-30,res:+25,honor:+10,
-   out:"Le convoi passe. Pertes lourdes parmi l'escorte. Les munitions arrivent à destination. Le front tient grâce à votre sacrifice."},
-  {text:"Contourner par les égouts et les tunnels — chemin de trente heures.",tag:'TACTIQUE',hp:-10,res:+15,honor:+5,
-   out:"Le convoi arrive en retard mais intact. L'astuce vous a coûté du temps. Deux bataillons ont failli craquer avant votre arrivée."},
-  {text:"Attirer l'ennemi en embuscade avec un leurre, puis foncer.",tag:'RUSE',hp:-15,res:+20,honor:+15,
-   out:"Le leurre fonctionne parfaitement. Le convoi passe pendant que l'ennemi pourchasse des véhicules vides. Mission accomplie avec panache."}
+  {text:'Mediter sur la vision — laisser la foi se renforcer.',ico:'&#128591;',type:'faith',hint:'Restauration et honneur',hp:15,res:0,honor:25,xp:20,out:'Dix minutes immobile. Quand vous vous levez, la peur est absente.'},
+  {text:'Agir immediatement — suivre l\'intuition.',ico:'&#127939;',type:'explore',hint:'Bonus XP et decouverte',hp:0,res:0,honor:15,xp:30,dice:true,out:'Vous suivez l\'intuition et trouvez exactement ce dont vous aviez besoin.',outBad:'L\'intuition vous emmene dans une impasse sous les tirs ennemis.',outGood:'Providence imperiale : équipement de qualite abandonné la.',lootGood:'casque'},
+  {text:'Ignorer la vision — rester rationnel.',ico:'&#129504;',type:'explore',hint:'Rationnel',hp:0,res:10,honor:0,xp:10,out:'Vous chassez la vision. Des hallucinations en zone de combat sont normales.'}
  ]},
-
-{id:'warp_storm',tags:['all'],phase:'mid',
- title:"La Tempête du Warp Dévore Tout",
- nar:s=>`Une tempête du Warp isole votre unité depuis six jours. La réalité se déchire. Des formes changeantes rôdent en marge du camp. Trois soldats ont déjà succombé à la folie — ou à quelque chose de bien pire. ${s.name}, les munitions et la nourriture s'épuisent.`,
+{id:'plague_village',phase:'mid',tags:['all'],type:'event',title:'Le Village de la Mort Douce',
+ nar:function(s){var t='Le village de Keth\'al aurait du être mort depuis quatre jours. Les symptomes — les necroses rampantes, les nodules qui bougent sous la peau — font de Nurgle une évidence. Et pourtant les habitants marchent encore. Et ils sourient.';t+='\n\nC\'est le sourire qui vous troublé le plus.';t+='\n\nQuatre cents ames. Le Commissaire regional a déjà transmis les coordonnees pour la purge orbitale. Sa voix dans votre oreillette est plate, professionnelle. Mais a vos pieds, une petite fille vous tend une fleur des champs toute froissee. Ses yeux sont intacts. Pas encore contamines. Pas encore.';return t;},
  choices:[
-  {text:"Brûler les symboles chaotiques et prier pour un ancrage dans la réalité.",tag:'FOI',hp:-10,res:-15,honor:+20,
-   out:"La prière collective crée un bouclier de foi. La tempête fait rage mais le camp tient. Trois jours plus tard elle se dissipe. Miraculeusement."},
-  {text:"Explorer la source de la tempête et l'éteindre depuis l'intérieur.",tag:'EXPLORATION',hp:-25,res:-10,honor:+15,
-   out:"Au cœur de la tempête, un Chanteur de Rune blessé maintient un portail ouvert involontairement. Vous le soignez. La tempête s'arrête."},
-  {text:"Abandonner les équipements lourds et fuir vers la zone stable la plus proche.",tag:'TACTIQUE',hp:-15,res:-30,honor:-5,
-   out:"La fuite coûte le matériel lourd mais sauve les vies. Honneur légèrement entamé pour l'abandon d'équipement impérial."}
+  {text:'Ordonner la quarantaine et chercher un remede.',ico:'&#127973;',type:'sacrifice',hint:'Humanité — couteux',hp:-5,res:-20,honor:20,xp:20,dice:true,out:'La quarantaine tient. Un Biologis trouve la source. Soixante personnes survivent.',outBad:'La quarantaine cede. La maladie se répand.',outGood:'Quarantaine parfaite. Cent personnes survivent.',lootGood:'donnees'},
+  {text:'Autoriser la purge orbitale immediate.',ico:'&#9732;',type:'combat',hint:'Efficace — zero risque',hp:0,res:0,honor:-15,xp:10,out:'L\'orbite brule proprement. La contamination est stoppee.'},
+  {text:'Interroger les survivants avant de décider.',ico:'&#128172;',type:'npc',hint:'Peut révéler une troisieme option',hp:-10,res:-10,honor:10,xp:25,dice:true,out:'Une vieille femme vous conduit a la source. La purge est chirurgicale. Cent personnes survivent.',loot:'donnees',outBad:'Les survivants paniquent et s\'eparpillent.',outGood:'Temoignage complet. La purge parfaite sauve cent vingt personnes.',lootGood:'coords'}
  ]},
-
-{id:'dark_eldar_raid',tags:['marine','guard','inquisitor','wolves'],phase:'mid',
- title:"Les Voleurs de Kaïn Morr",
- nar:s=>`Une flotte d'Eldar Sombres a réalisé un raid éclair sur la cité de Sarnath. Des milliers d'habitants sont emmenés comme esclaves vers le Voile Sombre. ${s.name}, leur vaisseau est encore à portée. Mais les attaquer risque de déclencher l'exécution des captifs.`,
+{id:'traitor_general',phase:'late',tags:['all'],type:'event',title:'Trahison au Commandement',
+ nar:function(s){var t='Le General Mordechai Veyne commande le Front Sud depuis quatorze mois. Quatorze mois pendant lesquels les offensives imperiales ont échoué avec une regularite qui dépassé la statistique, la malchance, et même l\'incompetence.';t+='\n\nVous avez le dossier. Trente-deux pages de preuves. Six bataillons massacres dans des embuscades parfaites. Des coordonnees vendues. Des noms d\'agents compromis.';t+='\n\nEt il est la, a cinq mètrès de vous, penchee sur sa table, dictant des ordres d\'une voix calme et assuree. Il ne sait pas que vous savez. Demain a l\'aube, une offensive de quarante mille hommes s\'ebranle. Si Mordechai en connaît les details...';return t;},
  choices:[
-  {text:"Attaquer le vaisseau — les Eldar Sombres ne méritent aucune négociation.",tag:'COMBAT',hp:-20,res:-20,honor:+10,
-   out:"Le vaisseau est endommagé mais s'échappe dans le Voile. Environ la moitié des captifs ont survécu au chaos. Victoire imparfaite."},
-  {text:"Infiltrer le vaisseau en secret et libérer les captifs de l'intérieur.",tag:'RUSE',hp:-25,res:-15,honor:+25,
-   out:"Mission audacieuse. Vous libérez deux mille prisonniers depuis les cales. Le vaisseau Eldar explose derrière vous. Épique."},
-  {text:"Laisser partir le vaisseau et tracer sa route vers leur cité.",tag:'TACTIQUE',hp:0,res:-5,honor:-10,
-   out:"Vous marquez la route. Une expédition de représailles sera lancée. Mais ces captifs-ci... Leur destin pèse lourd."}
+  {text:'L\'arrêter publiquement.',ico:'&#128226;',type:'faith',hint:'Justice — moral',hp:0,res:0,honor:20,xp:20,out:'Le scandale secoue le commandement. L\'offensive est retardee. Votre reputation gagne en purete.'},
+  {text:'L\'eliminer discretement.',ico:'&#128481;',type:'explore',hint:'Efficace — l\'honneur en souffre',hp:-5,res:-5,honor:-10,xp:15,dice:true,out:'Mort accidentelle. L\'offensive reussit. Vous dormez moins bien.',outBad:'Un temoin vous observe. L\'Inquisition ouvert un dossier.',outGood:'Exécution propre. L\'offensive beneficie d\'un avantage de surprise total.'},
+  {text:'Le retourner contre ses maîtrès.',ico:'&#127917;',type:'explore',hint:'Double jeu',hp:0,res:10,honor:5,xp:30,out:'Mordechai envoie de fausses positions au Chaos. Double victoire. Double secret.'}
  ]},
-
-/* ══ LATE (act 5) ══ */
-{id:'traitor_general',tags:['all'],phase:'late',
- title:"Trahison au Commandement Suprême",
- nar:s=>`Le Général Mordechai est un hérétique. Les preuves sont irréfutables — il a vendu des positions de troupes aux ennemis depuis deux mois. Mais sa capture publique déstabiliserait le moral d'un million de soldats à quarante-huit heures d'une offensive cruciale.`,
+{id:'chaos_marines',phase:'late',tags:['marine','guard','wolves','inquisitor'],type:'combat',title:'Les Fils de la Ruine',
+ nar:function(s){var t='Ils vous attendent. Ce n\'est pas une embuscade — ils vous ont délibérément laisse approcher. Quatre Marines du Chaos qui occupent le corridor avec la decontraction de gens qui n\'ont pas eu peur depuis très longtemps.';t+='\n\nLeurs armures sont des oeuvres d\'horreur : gravees de visages hurlants, couverts de symboles qui changent si vous les regardez trop longtemps. Le plus grand porte un brassard où sont cloues des cranes en rang serres. Chacun a appartenu a quelqu\'un.';t+='\n\nRejoins-nous, dit-il. Sa voix est presque aimable. Où tombé ici. Au moins, tombé en guerrier.\n\nDerriere eux, vous apercevez ce que vous êtes venu chercher. Il faut passer. Il faut.';return t;},
  choices:[
-  {text:"L'arrêter publiquement — la vérité doit éclater, quoi qu'il en coûte.",tag:'FOI',hp:-5,res:-10,honor:+20,
-   out:"Le scandale éclate. Le moral vacille. Mais une trahison révélée vaut mieux qu'une trahison cachée. L'offensive est retardée de dix jours."},
-  {text:"L'éliminer discrètement et couvrir sa mort avec une excuse crédible.",tag:'RUSE',hp:-10,res:-5,honor:-10,
-   out:"Mort accidentelle lors d'une inspection de front. L'offensive continue. Vous dormez moins bien qu'avant."},
-  {text:"Le forcer à coopérer en le retournant contre ses maîtres Chaos.",tag:'TACTIQUE',hp:-5,res:+10,honor:+5,
-   out:"Le Général retourné fournit de fausses informations aux forces du Chaos. L'offensive bénéficie d'un avantage de surprise total."}
+  {text:'Pour l\'Emperor — attaque frontale.',ico:'&#9769;',type:'combat',hint:'Honneur maximal',hp:-30,res:-20,honor:25,xp:30,dice:true,out:'Deux Marines du Chaos tombent. Les deux autres reculent en crachant des maledictions.',outBad:'Vous êtes repoussé violemment. Repli forcé.',outGood:'Assaut parfait. Tous les quatre neutralises.',lootGood:'armure2'},
+  {text:'Feindre la consideration — puis frapper.',ico:'&#127917;',type:'combat',hint:'Rusé — moins de dégâts',hp:-20,res:-10,honor:10,xp:20,dice:true,out:'A la seconde où leur garde baisse, vous frappez. Deux morts, deux en fuite.',outBad:'Votre feinte est percee. Ils attaquent en coordination.',outGood:'La feinte est parfaite. Trois elimines avant qu\'ils reagissent.',loot:'armure1'},
+  {text:'Contourner par un conduit d\'aeration.',ico:'&#128062;',type:'explore',hint:'Aucune perte, objectif retarde',hp:-5,res:-10,honor:-5,xp:10,out:'Un conduit d\'aeration. Lent mais efficace. Vous reapparaissez derrière eux.'}
  ]},
-
-{id:'daemon_manifest',tags:['all'],phase:'late',
- title:"Ce qui Ne Devrait Pas Avoir de Nom",
- nar:s=>`Un Grand Démon de Khorne s'est manifesté dans la cathédrale de Primus. Sa présence seule tue les soldats ordinaires à cent mètres. Seules des armes bénie ou un psyker de premier rang peuvent le blesser. ${s.name}, vous avez l'un ou l'autre — mais pas les deux.`,
+{id:'pillards',phase:'mid',tags:['all'],type:'trap',title:'L\'Embuscade des Pillards',
+ nar:function(s){var t='La première silhouette surgit de l\'ombre. Puis une autre. Cinq au total — mais vous suspectez qu\'il en reste derrière vous. Des gens désespérés qui avaient le temps de préparer cette rencontre, contrairement a vous.';t+='\n\nIls ne sont pas des soldats. Ils sont pires : des survivants. Maigres, blessés, les yeux de gens qui ont vu leur monde s\'effondrer et ont décidé que votre équipement les aiderait a survivre un jour de plus.';t+='\n\nLeur chef — un homme dont la moitie du visage est tissu cicatriciel — vous tient en joue avec un pistolet assemblé a partir de trois autres cassés. Son regard est calme. Resigne. Le regard de quelqu\'un qui a déjà décidé ce qu\'il ferait si vous refusiez.\n\nL\'équipement où la vie. Simple. On a besoin de tout ce que vous portez.';return t;},
  choices:[
-  {text:"L'affronter directement avec les armes bénies dont vous disposez.",tag:'COMBAT',hp:-35,res:-20,honor:+30,
-   out:"Combat titanesque. Le Démon rugit en se dissolvant dans le Warp. Vos blessures sont profondes mais vous vivez. La cathédrale est purifiée."},
-  {text:"Utiliser la cathédrale elle-même comme piège — effondrement contrôlé.",tag:'TACTIQUE',hp:-20,res:-25,honor:+20,
-   out:"La cathédrale s'effondre sur le Démon. Il est piégé dans les décombres consacrés. Il ne peut se re-manifester avant un millénaire."},
-  {text:"Sceller la cathédrale et évacuer — contenir sans confronter.",tag:'SACRIFICE',hp:-10,res:-15,honor:+10,
-   out:"Scellement réussi. Le Démon hurle derrière les murs consacrés. Des gardes en permanence seront nécessaires pour l'éternité."}
+  {text:'Résister — attaquer les pillards en forcé.',ico:'&#9876;',type:'combat',hint:'Combat — risque de mort',hp:-30,res:-10,honor:10,xp:20,dice:true,out:'Vous en neutralisez trois avant qu\'ils se dispersent. Blessé mais debout, équipement intact.',outBad:'Ils sont trop nombreux. Un coup a la nuque vous assomme. Quand vous reprenez conscience, tout a disparu.',rob:true,outGood:'Reflexes parfaits. Les cinq pillards fuient où tombent.',loot:'munitions'},
+  {text:'Negocier — offrir des ressources contre votre liberté.',ico:'&#128172;',type:'npc',hint:'Perte ressources — équipement intact',hp:0,res:-40,honor:-5,xp:10,dice:true,out:'Ils acceptent vos ressources et vous laissent passer. Humiliant mais efficace.',outBad:'Ils prennent les ressources ET l\'équipement.',rob:true,outGood:'Votre sang-froid les impressionne. Ils prennent peu.'},
+  {text:'Fuir a toute vitesse dans les ruines.',ico:'&#127939;',type:'explore',hint:'Fuite — chance pure',hp:-15,res:0,honor:0,xp:10,dice:true,out:'Vous disparaissez dans les ruines. Ils abandonnent la poursuite.',outBad:'Ils vous rattrapent dans un couloir sans issue. Vous êtes dépouillé.',rob:true,outGood:'Sprint parfait. Vous semez les pillards en moins de deux minutes.'}
  ]},
-
-{id:'plague_marine_elite',tags:['marine','guard','wolves','inquisitor'],phase:'late',
- title:"Les Enfants de Nurgle aux Portes",
- nar:s=>`Sept Marines du Chaos de la légion des Fils de Nurgle assiègent le poste de commandement central. Increvables, ignifuges, indifférents à la douleur — chaque balle les ralentit à peine. Ils ont avec eux un Sorcier du Chaos capable de lancer une malédiction de pourriture sur toute la garnison.`,
+{id:'finale_heretic',phase:'finale',tags:['marine','guard','wolves','inquisitor'],type:'combat',title:'Confrontation Finale — Lord Malachar',
+ nar:function(s){var t='Vous avez traversé l\'enfer pour arriver ici. Litteralement.';t+='\n\nLa salle du trône de Lord Malachar n\'a plus rien d\'imperial. Les colonnes sont des vertèbres geantes, les murs palpitent d\'une lente respiration, et le trône lui-même semble avoir poussé, organique, autour de l\'homme qui y siège depuis des millénaires.';t+='\n\nIl ne se levé pas quand vous entrez. Il vous regardé — et dans ce regard vous percevez quelque chose d\'inattendu. Pas de la haine. Pas du mepris.';t+='\n\nDe la curiosite.\n\nUn guerrier qui est alle si loin, dit-il. Sa voix emplit l\'espace comme si les murs parlaient. Mourir ici sera glorieux, '+s.name+'. Presque autant que de me rejoindre.\n\nL\'air crackle. Le moment final est venu.';return t;},
  choices:[
-  {text:"Viser le Sorcier en premier — éliminer la menace la plus dangereuse.",tag:'TACTIQUE',hp:-25,res:-20,honor:+20,
-   out:"Le Sorcier mort, les Marines du Chaos perdent leur soutien magique. Ils sont toujours dangereux mais mortels. La garnison tient."},
-  {text:"Utiliser du feu béni — Flameurs Sacrés à pleine puissance.",tag:'FOI',hp:-20,res:-30,honor:+25,
-   out:"Le feu sacré brûle même les chairs corrompues de Nurgle. Trois Marines meurent hurlant des louanges à leur dieu. Quatre fuient."},
-  {text:"Piéger les couloirs avec des explosifs puis les attirer dedans.",tag:'RUSE',hp:-15,res:-25,honor:+15,
-   out:"L'explosion secoue le bâtiment entier. Quatre Marines sont neutralisés. Trois s'échappent dans les ruines. Victoire partielle."}
+  {text:'Pour l\'Emperor — et pour tous ceux qui sont tombés !',ico:'&#9769;',type:'combat',hint:'Le chemin de la gloire',hp:-40,res:-20,honor:40,xp:50,dice:true,out:'Le duel dure une heure. Lord Malachar tombé en maudissant votre nom. Victorieux.',outBad:'Lord Malachar est trop puissant. Vous reculez blessé.',outGood:'Le duel est parfait. Malachar tombé stupefait.',lootGood:'armure2'},
+  {text:'Faire s\'effondrer la salle sur lui.',ico:'&#128163;',type:'explore',hint:'Le chemin du stratege',hp:-20,res:-35,honor:25,xp:40,dice:true,out:'Les chargés font leur travail. Le plafond s\'effondré sur Malachar.',outBad:'Les chargés declenchent une reaction magique. Malachar en ressort renforcé.',outGood:'Effondrement parfait. Malachar disparaît sous des tonnes de pierre consecree.'},
+  {text:'Attendre le moment de faiblesse — puis frapper.',ico:'&#127917;',type:'explore',hint:'Le chemin de la patience',hp:-25,res:-10,honor:30,xp:45,dice:true,out:'Il monologue. Vous attendez. La lame traversé son armure dans sa seconde d\'inattention.',outBad:'Il ne baisse jamais sa garde. Combat en position defavorable.',outGood:'Frapper au bon moment. La lame traversé directement son armure. Victoire.'}
  ]},
-
-/* ══ FINALE ══ */
-{id:'final_heretic_lord',tags:['marine','guard','wolves','inquisitor'],phase:'finale',
- title:"Le Seigneur Hérétique — Confrontation Finale",
- nar:s=>`Lord Malachar, Champion du Chaos et traître millénaire, vous attend sur le pont de son palais flottant. Il a tué des Primarchs. Il a brûlé des systèmes solaires. Il vous regarde avec quelque chose ressemblant à du respect. « Un guerrier digne, » dit-il. « Mais les dieux de la Ruine réclament cette heure. »`,
+{id:'finale_hive',phase:'finale',tags:['marine','guard','wolves'],type:'combat',title:'Confrontation Finale — La Norn-Reine',
+ nar:function(s){var t='Deux kilometres de chair vivante pour arriver jusqu\'ici. Deux kilometres de tissus synaptiques et de tunnels que la Norn-Reine a extrudes d\'elle-même — sauf que cette toile pese trois cent mille tonnes et recouvre deux continents.';t+='\n\nLa chambre centrale est une cathedrale de biologie. La Norn-Reine occupé son centre comme un organe vital. Trois milliards de creatures sur cette planète dependent de son signal synaptique. Si elle meurt, elles perdent la raison. Ce qui est pire que de mourir.';t+='\n\nElle vous percoit. Pas avec des yeux. Avec quelque chose de bien plus profond. Et pendant une fraction de seconde, vous captez une pensée qui n\'est pas la votre :\n\nJe savais que tu viendrais. Depuis le debut.';return t;},
  choices:[
-  {text:"Engager le combat — pour l'Emperor et pour tous ceux qui sont tombés.",tag:'COMBAT',hp:-40,res:-20,honor:+35,
-   out:"Le duel dure une heure. Le palais s'effondre autour de vous. Lord Malachar tombe, maudit vos noms, et se dissout dans le Warp. Vous survivez, à peine."},
-  {text:"Utiliser l'environnement — faire tomber le palais sur lui.",tag:'TACTIQUE',hp:-20,res:-30,honor:+20,
-   out:"Le palais explose autour de lui. Malachar rugit dans les flammes. Le Warp emporte ses cendres. Victoire stratégique."},
-  {text:"Le laisser s'exprimer — puis frapper quand il baisse sa garde.",tag:'RUSE',hp:-25,res:-15,honor:+25,
-   out:"Il monologue. Vous frappez. La lame traverse son armure lors de la seule seconde d'inattention. L'ennemi millénaire tombe, stupéfait."}
+  {text:'Charger — la tuer au prix de votre sante mentale.',ico:'&#128170;',type:'combat',hint:'Sacrifice ultime',hp:-45,res:-20,honor:45,xp:50,dice:true,out:'La douleur psychique est totale. Vous avancez quand même. La Norn-Reine meurt. Heros a jamais.',outBad:'La douleur psychique vous terrasse avant d\'atteindre la cible.',outGood:'Résistance mentale parfaite. La Norn-Reine meurt en moins d\'une minute.'},
+  {text:'Bombardement orbital cible.',ico:'&#128640;',type:'explore',hint:'Strategie a distance',hp:-15,res:-35,honor:20,xp:35,dice:true,out:'Frappé orbitale. Vous courez vers la sortie. L\'essaim s\'effondré.',outBad:'Les coordonnees sont fausses. La frappé manque la chambre centrale.',outGood:'Frappé parfaite. La chambre est desintegree en trente secondes.'},
+  {text:'Inverser la connexion synaptique.',ico:'&#128260;',type:'explore',hint:'Genie tactique',hp:-20,res:-30,honor:30,xp:45,dice:true,out:'L\'essaim devient une masse auto-devorante. La Norn-Reine hurle dans son propre vide.',outBad:'L\'inversion échoué partiellement. L\'essaim est perturbe mais fonctionnel.',outGood:'Inversion totale. Trois milliards de creatures se retournent contre leur propre mere.'}
  ]},
-
-{id:'final_hive_mind',tags:['marine','guard','wolves'],phase:'finale',
- title:"La Conscience de la Ruche",
- nar:s=>`La Norn-Reine — cerveau de l'essaim planétaire — pulse dans une chambre de chair et de cristal. Si elle meurt, l'essaim se désorganise immédiatement. Mais ses connexions psychiques sont si puissantes que l'approcher déchire lentement l'esprit. ${s.name} ressent déjà ses souvenirs se brouiller.`,
+{id:'finale_techpriest',phase:'finale',tags:['techpriest','inquisitor'],type:'combat',title:'Confrontation Finale — L\'Overlord Éternel',
+ nar:function(s){var t='Les systèmes mécaniques cessent de fonctionner dans un rayon de trente mètrès autour de lui.';t+=' Vos capteurs s\'eteignent un par un. L\'éclairage de votre casque vacille. Et le silence s\'installé — le silence des machines qui s\'arretent — que vous, Pretre-Technicien, ressentez comme une amputation.';t+='\n\nSzarekh n\'est pas debout. Il est simplement present, comme si debout était un concept trop trivial pour lui. Cinquante millions d\'années de mémoire deroulee dans un corps de métal vivant.';t+='\n\nOrganique, dit-il. Sa voix ressemble au son que ferait un orgue construit a partir de glas et de tonnerre. Ephemere. Êtes-vous venu mourir dans ma chambre ? Où avez-vous quelque chose d\'interessant a me proposer ?';return t;},
  choices:[
-  {text:"Charger — tuer la Norn-Reine au prix de sa propre santé mentale.",tag:'SACRIFICE',hp:-45,res:-20,honor:+40,
-   out:"Vous combattez à travers la douleur psychique. La Norn-Reine meurt. L'essaim s'effondre en quelques minutes. Vous sortez à moitié fou, pleurant et riant à la fois. Héros."},
-  {text:"Bombarder la chambre depuis l'extérieur.",tag:'TACTIQUE',hp:-15,res:-35,honor:+20,
-   out:"Bombardement orbital ciblé. La chambre et la Norn-Reine sont désintégrées. L'essaim tombe en miettes. Mission accomplie à distance raisonnable."},
-  {text:"Interférer avec ses communications pour retourner l'essaim contre lui-même.",tag:'RUSE',hp:-20,res:-25,honor:+25,
-   out:"Le signal d'inversion transforme l'essaim en masse auto-dévorante. Spectaculaire et efficace. La Norn-Reine hurle dans un vide psychique de sa propre création."}
+  {text:'Activer le virus Necrodermis.',ico:'&#128137;',type:'explore',hint:'Préparation — tout où rien',hp:-20,res:-35,honor:25,xp:50,dice:true,out:'Le virus se propage. Szarekh s\'eteint avec un son comme un soupir millénaire.',outBad:'Le virus est détecté et neutralise. Szarekh se levé, furieux.',outGood:'Propagation parfaite en moins de cinq secondes.'},
+  {text:'Combat direct avec armes anti-Necron.',ico:'&#9876;',type:'combat',hint:'Combat technologique',hp:-30,res:-20,honor:25,xp:35,dice:true,out:'Vous trouvez le noeud de controle et le detruisez. L\'Overlord s\'effondré en métal inerte.',outBad:'Le Necron regenere chaque blessure. Vous reculez épuisé.',outGood:'Precision chirurgicale. Le noeud de controle détruit du premier coup.',lootGood:'armure2'},
+  {text:'Parler a l\'Overlord — un accord millénaire.',ico:'&#128172;',type:'npc',hint:'Diplomatique imprevisible',hp:-5,res:15,honor:-10,xp:35,dice:true,out:'Szarekh est... interesse. Un accord est signé. Vous n\'êtes pas sur de ce que vous avez promis.',outBad:'Szarekh n\'a aucun interet a parler. Il attaque immediatement.',outGood:'L\'accord est favorable. Szarekh reculé ses forces de trois secteurs.'}
  ]},
-
-{id:'final_chaos_ascension',tags:['chaos'],phase:'finale',
- title:"L'Ascension — Entre Gloire et Damnation",
- nar:s=>`Les Dieux du Chaos vous offrent leur ultime cadeau : l'Ascension en Prince Démon. Immortalité absolue. Puissance démentielle. Mais votre humanité — ce qui reste — disparaît à jamais. En face de vous, un Champion de l'Imperium venu vous arrêter. Le choix est maintenant.`,
+{id:'finale_chaos',phase:'finale',tags:['chaos'],type:'event',title:'Confrontation Finale — L\'Ascension',
+ nar:function(s){var t='Ils parlent tous en même temps, et leur voix ne fait qu\'une — un accord parfait qui resonne directement dans les os de votre crane.';t+='\n\nTu as prouvé ta valeur. L\'ascension t\'attend.';t+='\n\nDevant vous, un Champion des Ultramarines en armure immaculee, venu vous arrêter seul, comme si l\'univers entier regardait. Il ne dit rien. Il attend. Dans son regard, pas de haine — juste une tristesse infinie et une determination plus ancienne que la peur.';t+='\n\nDerriere vous, le Warp. Devant vous, l\'Empire. Entre les deux, l\'ame de '+s.name+' — la seule chose que personne ne peut prendre, mais que vous pouvez encore choisir de donner.';return t;},
  choices:[
-  {text:"Accepter l'Ascension — devenir un Prince Démon.",tag:'HÉRÉSIE',hp:+50,res:+30,honor:-50,
-   out:"Vous transcendez la chair. La douleur est totale, puis disparaît. Vous n'êtes plus humain. Vous êtes éternel. Et quelque chose de vous — de ce que vous étiez — pleure."},
-  {text:"Refuser l'Ascension et affronter le Champion Impérial.",tag:'FOI',hp:-35,res:-20,honor:+30,
-   out:"Le combat est brutal et magnifique. Vous gagnez. Et vous restez humain — maudit, renégat, mais humain. Les Dieux du Chaos vous méprisent désormais."},
-  {text:"Négocier — prendre le pouvoir sans sacrifier l'âme.",tag:'RUSE',hp:-10,res:+20,honor:-20,
-   out:"Tzeentch apprécie votre audace. Il vous accorde une parcelle de pouvoir démonique sans Ascension complète. Arrangement dangereux. Vous êtes désormais sa marionnette préférée."}
- ]},
-
-{id:'final_necron_overlord',tags:['techpriest','inquisitor'],phase:'finale',
- title:"L'Overlord de l'Éternité",
- nar:s=>`Szarekh, Roi Silencieux reconstructé, s'éveille dans sa chambre de cristal vert. Sa présence seule désactive les systèmes mécaniques à proximité. Il vous regarde sans émotion reconnaissable. « Organique. » dit-il. « Ephémère. Vous êtes venu mourir dans ma chambre ? »`,
- choices:[
-  {text:"Activer le virus Nécrodermis que vous avez préparé.",tag:'LOGIQUE',hp:-20,res:-35,honor:+25,
-   out:"Le virus se propage dans les circuits de l'Overlord. Il tente de se télécharger dans un nouveau corps mais vous coupez la connexion. Il s'éteint avec un son comme un soupir millénaire."},
-  {text:"L'affronter avec les armes anti-Necron récupérées.",tag:'COMBAT',hp:-40,res:-25,honor:+30,
-   out:"Chaque coup échange destruction contre regénération. Vous finissez par trouver le nœud de contrôle et le détruire. L'Overlord s'effondre en métal inerte."},
-  {text:"Parler à l'Overlord — chercher un accord entre anciens êtres de pouvoir.",tag:'RUSE',hp:-5,res:+15,honor:-10,
-   out:"Szarekh est... intéressé. Un accord millénaire est signé en protocole machine. Vous n'êtes pas sûr de ce que vous avez promis en retour."}
+  {text:'Accepter l\'Ascension — devenir Prince Démon.',ico:'&#127752;',type:'explore',hint:'La damnation glorieuse',hp:50,res:30,honor:-50,xp:40,out:'La transformation est totale. Vous n\'êtes plus humain. Éternel. Quelque chose en vous pleure.'},
+  {text:'Refuser et affronter le Champion.',ico:'&#9876;',type:'combat',hint:'Redemption possible',hp:-35,res:-20,honor:35,xp:50,dice:true,out:'Vous refusez les Dieux. Le combat est brutal. Vous gagnez. Et vous restez humain.',outBad:'Le Champion est plus fort que prevu. Vous tombez.',outGood:'Duel parfait. Le Champion s\'incliné devant votre résistance aux Dieux.'},
+  {text:'Negocier — prendre le pouvoir sans perdre l\'ame.',ico:'&#127917;',type:'explore',hint:'Le pari de Tzeentch',hp:-10,res:20,honor:-20,xp:35,dice:true,out:'Tzeentch vous accorde une parcelle de pouvoir sans Ascension complète.',outBad:'Les Dieux rejettent la negociation. Vous êtes attaque de toutes parts.',outGood:'Tzeentch rit. L\'accord parfait — vous gardez votre humanité. Pour l\'instant.'}
  ]}
 ];
 
-/* ═══════════════════════════════════════
-   SCENE SELECTION
-═══════════════════════════════════════ */
+/* SCENE POOL */
 function pickScene(){
-  const act = S.act;
-  let phase;
-  if(act<=2) phase='early';
-  else if(act<=4) phase='mid';
-  else if(act===5) phase='late';
-  else phase='finale';
-
-  const fid = S.faction;
-  const compatible = SCENES.filter(sc=>{
-    if(S.usedScenes.includes(sc.id)) return false;
-    if(sc.phase!==phase) return false;
-    if(sc.tags.includes('all')||sc.tags.includes(fid)) return true;
-    return false;
+  var phase=S.act<=2?'early':S.act<=5?'mid':S.act<=7?'late':'finale';
+  var fid=S.faction;
+  var pool=SCENES.filter(function(sc){
+    if(S.usedScenes.indexOf(sc.id)>=0)return false;
+    if(sc.phase!=='any'&&sc.phase!==phase)return false;
+    return sc.tags.indexOf('all')>=0||sc.tags.indexOf(fid)>=0;
   });
-  // fallback: ignore faction filter
-  const pool = compatible.length>0 ? compatible :
-    SCENES.filter(sc=>sc.phase===phase&&!S.usedScenes.includes(sc.id));
-  // ultimate fallback: any unused
-  const final = pool.length>0 ? pool :
-    SCENES.filter(sc=>!S.usedScenes.includes(sc.id));
-  if(final.length===0) return SCENES[Math.floor(Math.random()*SCENES.length)];
-  return final[Math.floor(Math.random()*final.length)];
+  if(!pool.length)pool=SCENES.filter(function(sc){return sc.phase===phase&&S.usedScenes.indexOf(sc.id)<0;});
+  if(!pool.length)pool=SCENES.filter(function(sc){return sc.phase==='late'&&S.usedScenes.indexOf(sc.id)<0;});
+  if(!pool.length)pool=SCENES.filter(function(sc){return S.usedScenes.indexOf(sc.id)<0;});
+  if(!pool.length)return SCENES[0];
+  return pool[Math.floor(Math.random()*pool.length)];
 }
 
-/* ═══════════════════════════════════════
-   HELPERS
-═══════════════════════════════════════ */
-function $$(...args){return args.join('')}
-function rand(a){return a[Math.floor(Math.random()*a.length)]}
-function clamp(v,mn=0,mx=100){return Math.min(mx,Math.max(mn,v))}
-function panel(inner){return`<div class="panel"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div>${inner}</div>`}
-function div(icon='✦'){return`<div class="div"><span>${icon}</span></div>`}
-
-function renderStats(){
-  const f=S.fdata;
-  const rl=f?f.reslabel:'Ressources';
-  const hn=S.honor>60?'Gloire':S.honor>30?'Honneur':'Déchéance';
-  return`<div id="sbar">
-    <div class="sb"><span class="sl">Points de Vie</span><span class="sv">${S.hp}</span><div class="sbo"><div class="sbi bh" style="width:${S.hp}%"></div></div></div>
-    <div class="sb"><span class="sl">${rl}</span><span class="sv">${S.res}</span><div class="sbo"><div class="sbi br" style="width:${S.res}%"></div></div></div>
-    <div class="sb"><span class="sl">${hn}</span><span class="sv">${S.honor}</span><div class="sbo"><div class="sbi bn" style="width:${S.honor}%"></div></div></div>
-  </div>`
-}
-
-function setMain(h){document.getElementById('main').innerHTML=h}
-
-function statPreview(hp,res,hon){
-  const parts=[];
-  if(hp) parts.push(`<span class="${hp>0?'pos':'neg'}">${hp>0?'+':''}${hp} PV</span>`);
-  if(res) parts.push(`<span class="${res>0?'pos':'neg'}">${res>0?'+':''}${res} RES</span>`);
-  if(hon) parts.push(`<span class="${hon>0?'pos':'neg'}">${hon>0?'+':''}${hon} HON</span>`);
-  return parts.length?`<div class="cstat">${parts.join('')}</div>`:'';
-}
-
-/* ═══════════════════════════════════════
-   SCREENS
-═══════════════════════════════════════ */
-function showIntro(){
-  S.phase='intro';
-  setMain(panel(`
-    <p class="intro-lore">Dans le 41ème millénaire, il n'y a pas de paix parmi les étoiles — seulement un bain de sang éternel et le sacrifice de millions au nom de l'Imperium de l'Humanité.</p>
-    <div class="lq">« Seul l'Homme peut façonner son destin dans l'obscurité absolue de ce millénaire. »</div>
-    <p class="intro-lore">Vous êtes l'un des rares élus capables de changer le sort d'un monde. Votre foi vous sauvera — ou vous damnera.</p>
-    ${div('☩')}
-    <p style="text-align:center;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.22em;color:var(--parch2)">CHOISISSEZ VOTRE FACTION</p>
-    <div class="fgrid">
-      ${FACTIONS.map(f=>`
-        <div class="fc" onclick="selectFaction('${f.id}')">
-          <span class="fi">${f.icon}</span>
-          <div class="fn">${f.name}</div>
-          <div class="fd">${f.desc}</div>
-          <div class="fsl">${f.sl}</div>
-        </div>`).join('')}
-    </div>
-  `));
-}
-
-function selectFaction(id){
-  S.faction=id;S.fdata=FACTIONS.find(f=>f.id===id);
-  S.honor=S.fdata.startHonor;
-  showNameInput();
-}
-
-function showNameInput(){
-  const f=S.fdata;
-  setMain(panel(`
-    <div style="text-align:center;margin-bottom:1rem">
-      <div class="fbadge">${f.icon} ${f.name} — ${f.chapter}</div>
-      <p style="font-style:italic;color:var(--parch2);font-size:.9rem;line-height:1.7">${f.lore}</p>
-    </div>
-    ${div()}
-    <p style="font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.14em;color:var(--parch2);text-align:center;margin-bottom:.8rem">NOMMEZ VOTRE GUERRIER</p>
-    <div class="niw">
-      <input class="ni" id="nf" type="text" placeholder="Nom du guerrier..." maxlength="28" autocomplete="off"/>
-      <button class="btnp" onclick="startGame()">☩ POUR L'EMPEROR</button>
-    </div>
-    <button class="btns" style="margin:0 auto" onclick="showIntro()">← Changer de Faction</button>
-  `));
-  setTimeout(()=>{
-    const inp=document.getElementById('nf');
-    if(inp){inp.focus();inp.addEventListener('keydown',e=>{if(e.key==='Enter')startGame();})}
-  },50);
-}
-
-function startGame(){
-  const nf=document.getElementById('nf');
-  S.name=(nf?nf.value.trim():'')||rand(['Brother Aldric','Commissaire Vorh','Inquisiteur Kaelith','Magos 7-Delta','Vorn Ironfang','Kael le Maudit']);
-  S.act=0;S.usedScenes=[];S.hp=100;S.res=100;S.honor=S.fdata.startHonor;
-  S.phase='game';
-  nextScene(null,null);
-}
-
-/* ═══════════════════════════════════════
-   SCENE FLOW
-═══════════════════════════════════════ */
-function nextScene(choiceText, deltas){
-  // Apply deltas
-  if(deltas){
-    S.hp=clamp(S.hp+(deltas.hp||0));
-    S.res=clamp(S.res+(deltas.res||0));
-    S.honor=clamp(S.honor+(deltas.honor||0));
+/* FLOW */
+function nextScene(ct,d){
+  stopSpeak();
+  if(d){
+    S.hp=clamp(S.hp+(d.hp||0),0,getMaxHp());
+    S.res=clamp(S.res+(d.res||0));
+    S.honor=clamp(S.honor+(d.honor||0));
+    S.xp=Math.max(0,S.xp+(d.xp||0));
     if(S.hp<=0){renderDeath();return;}
   }
   S.act++;
-  if(S.act>S.maxActs){renderEnding(null);return;}
-
-  const scene=pickScene();
-  S.usedScenes.push(scene.id);
-  S.currentScene=scene;
-  renderScene(scene,deltas);
+  if(S.act>S.maxActs){renderEnding();return;}
+  var sc=pickScene();S.usedScenes.push(sc.id);S.currentScene=sc;
+  renderScene(sc,d);
 }
 
-function renderScene(scene,prevDeltas){
-  const isLast=S.act>=S.maxActs;
-  const actLabel=`ACTE ${S.act} / ${S.maxActs} — ${S.name} · ${S.fdata.name}`;
+function renderScene(sc,pd){
+  var isF=S.act>=S.maxActs;
+  S.pageNum+=Math.floor(Math.random()*8)+4;
+  if(sc.type==='combat')snd_battle();
 
-  // Notif deltas
-  let notifHTML='';
-  if(prevDeltas){
-    const parts=[];
-    if(prevDeltas.hp) parts.push(`<span class="notif ${prevDeltas.hp>0?'np':'nn'}">${prevDeltas.hp>0?'+':''}${prevDeltas.hp} PV</span>`);
-    if(prevDeltas.res) parts.push(`<span class="notif ${prevDeltas.res>0?'np':'nn'}">${prevDeltas.res>0?'+':''}${prevDeltas.res} RES</span>`);
-    if(prevDeltas.honor) parts.push(`<span class="notif ${prevDeltas.honor>0?'np':'nn'}">${prevDeltas.honor>0?'+':''}${prevDeltas.honor} HON</span>`);
-    notifHTML=`<div id="narea">${parts.join('')}</div>`;
-  } else notifHTML=`<div id="narea"></div>`;
+  var notifH='<div id="narea">';
+  if(pd){
+    if(pd.hp)  notifH+='<span class="notif '+(pd.hp>0?'np':'nn')+'">'+(pd.hp>0?'+':'')+pd.hp+' PV</span>';
+    if(pd.res) notifH+='<span class="notif '+(pd.res>0?'np':'nn')+'">'+(pd.res>0?'+':'')+pd.res+' RES</span>';
+    if(pd.honor)notifH+='<span class="notif '+(pd.honor>0?'np':'nn')+'">'+(pd.honor>0?'+':'')+pd.honor+' HON</span>';
+    if(pd.xp)  notifH+='<span class="notif np">+'+pd.xp+' XP</span>';
+  }
+  notifH+='</div>';
 
-  const choices=(scene.choices||[]).map((c,i)=>`
-    <button class="cbtn" onclick="pickChoice(${i})">
-      <span class="ctag">[${c.tag}]</span>${c.text}
-      ${statPreview(c.hp,c.res,c.honor)}
-    </button>`).join('');
+  var narTxt=typeof sc.nar==='function'?sc.nar(S):sc.nar;
+  S.curNar=narTxt;
 
-  setMain(`
-    ${renderStats()}
-    ${notifHTML}
-    ${panel(`
-      <div class="sc">${actLabel}</div>
-      <div id="stitle">${scene.title}</div>
-      ${div('✦')}
-      <div id="nbox"><span id="ntxt"></span><span class="tcur"></span></div>
-      <div id="carea" style="opacity:0;pointer-events:none;margin-top:1.5rem">${choices}</div>
-      ${isLast?'<p style="font-family:Cinzel,serif;font-size:.6rem;letter-spacing:.18em;color:var(--blood);text-align:center;margin-top:.8rem">⚔ CONFRONTATION FINALE ⚔</p>':''}
-    `)}
-  `);
+  var choH=(sc.choices||[]).map(function(c,i){
+    var cclass=CC[c.type]?' '+CC[c.type]:'';
+    var dtag=c.dice?'<span class="dtag">&#127922; DE</span>':'';
+    return '<button class="cbtn'+cclass+'" onclick="pickChoice('+i+')">'
+      +'<span class="clet">'+String.fromCharCode(65+i)+'.</span>'+dtag+(c.ico||'')+' '+c.text
+      +(c.hint?'<span class="chint">&#8627; '+c.hint+'</span>':'')
+      +'</button>';
+  }).join('');
 
-  const narrative=typeof scene.nar==='function'?scene.nar(S):scene.nar;
-  typeText(narrative,()=>{
-    document.querySelector('.tcur')?.remove();
-    const ca=document.getElementById('carea');
-    if(ca){ca.style.opacity='1';ca.style.pointerEvents='';}
+  var typeTag=sc.type?'<span class="stag '+(TC[sc.type]||'t-eve')+'">'+(TL[sc.type]||sc.type.toUpperCase())+'</span>':'';
+
+  setMain(
+    renderStats()+renderInv()+notifH+renderTopBar()+ttsBar()
+    +mkpanel(
+      '<div class="chmark">Chapitre '+S.act+' / '+S.maxActs+' &middot; '+S.name+' &middot; '+S.fdata.name+'</div>'
+      +'<div style="text-align:center;margin-bottom:.55rem">'+typeTag+'</div>'
+      +'<div id="stitle">'+sc.title+'</div>'
+      +mkdiv('&#10022;')
+      +'<div class="pgnum">&mdash; Page '+S.pageNum+' &mdash;</div>'
+      +'<div id="nbox"><span id="ntxt"></span><span class="tcur" id="tcur"></span></div>'
+      +'<button id="nextbtn" onclick="advancePage()">Tourner la page &#8594;</button>'
+      +'<div id="carea" style="opacity:0;pointer-events:none;margin-top:1.1rem">'+choH+'</div>'
+      +(isF?'<p style="font-family:\'Cinzel\',serif;font-size:.54rem;letter-spacing:.18em;color:var(--blood);text-align:center;margin-top:.65rem">&#9876; CONFRONTATION FINALE &#9876;</p>':'')
+    )
+  );
+
+  typeWriter(narTxt,function(){
+    var cur=document.getElementById('tcur');if(cur)cur.remove();
+    var ca=document.getElementById('carea');if(ca){ca.style.opacity='1';ca.style.pointerEvents='';}
+    if(S.ttsOn||S.autoRead)speak(narTxt);
   });
 }
 
 function pickChoice(idx){
-  const scene=S.currentScene;
-  const c=scene.choices[idx];
-  if(!c)return;
-  document.querySelectorAll('.cbtn').forEach(b=>b.disabled=true);
+  var sc=S.currentScene;var c=sc.choices[idx];if(!c)return;
+  stopSpeak();
+  document.querySelectorAll('.cbtn').forEach(function(b){b.disabled=true;});
+  if(c.type==='combat'||sc.type==='combat')snd_battle();
 
-  // Show outcome briefly then advance
-  const nbox=document.getElementById('nbox');
-  if(nbox){
-    const ca=document.getElementById('carea');
-    if(ca) ca.style.opacity='0';
-    nbox.innerHTML=`<em style="color:var(--parch2)">${c.out}</em>`;
+  function applyAndShow(outText,lootId,deltas,robbed){
+    if(robbed)stripAll();
+    if(lootId)addItem(lootId);
+    S.pendingDeltas=deltas;
+    var nbox=document.getElementById('nbox');
+    if(nbox){
+      var ca=document.getElementById('carea');if(ca)ca.style.opacity='0';
+      var ocls=robbed?'ob':(deltas.hp>0||deltas.honor>0)?'og':deltas.hp<-20?'ob':lootId?'oc':'';
+      var lln=lootId&&ITEMS[lootId]?'<div class="lootln">&#128230; Objet trouve : '+ITEMS[lootId].ico+' '+ITEMS[lootId].name+' &mdash; '+ITEMS[lootId].desc+'</div>':'';
+      var rln=robbed?'<div class="robln">&#9888; DEPOUILLE &mdash; Tout votre equipement est perdu</div>':'';
+      nbox.innerHTML='<div class="outbox '+ocls+'">'+outText+'</div>'+rln+lln;
+      if(S.ttsOn||S.autoRead)speak(outText+(robbed?' Vous avez ete depouille.':''));
+    }
+    var nb=document.getElementById('nextbtn');if(nb)nb.style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
-  setTimeout(()=>{
-    nextScene(`Choix: ${c.text}`,{hp:c.hp||0,res:c.res||0,honor:c.honor||0});
-  },2200);
-}
+  if(c.dice){
+    showDice(c.text,function(r,cat){
+      var outText,lootId,deltas,robbed=false;
 
-function typeText(text,onDone,speed=14){
-  const el=document.getElementById('ntxt');
-  if(!el){onDone&&onDone();return;}
-  let i=0;el.textContent='';
-  // Skip animation for long texts on mobile
-  const skip=text.length>500;
-  if(skip){el.textContent=text;onDone&&onDone();return;}
-  const iv=setInterval(()=>{
-    if(i<text.length){el.textContent+=text[i++];}
-    else{clearInterval(iv);onDone&&onDone();}
-  },speed);
-}
+      if(r===1&&(c.type==='combat'||sc.type==='combat')){
+        snd_damnation();
+        var nbox2=document.getElementById('nbox');
+        if(nbox2){var ca2=document.getElementById('carea');if(ca2)ca2.style.opacity='0';
+          nbox2.innerHTML='<div class="outbox ob">&#127922; 1 &mdash; FUMBLE FATAL. Une erreur catastrophique. La mort vient vite, comme un dernier acte de misericorde.</div>';}
+        setTimeout(function(){renderDeath();},2200);
+        return;
+      }
 
-/* ═══════════════════════════════════════
-   ENDINGS
-═══════════════════════════════════════ */
-function renderEnding(){
-  const h=S.honor;
-  let sym,title,txt;
-  if(h>=70){
-    sym='☩';title='Gloire Éternelle pour l\'Emperor';
-    txt=`${S.name} entre dans la légende de l'Imperium. Ses exploits seront gravés dans les Annales de Guerre, chantés par des milliers de bardes sur des milliers de mondes. Un Saint de Bataille, un héros véritable. L'Emperor lui-même reconnaîtrait sa valeur.`;
-  } else if(h>=45){
-    sym='⚔️';title='Devoir Accompli';
-    txt=`La mission est terminée. ${S.name} a servi l'Imperium avec honneur — ni saint ni démon, simplement un guerrier dans un univers impitoyable. L'Emperor approuve. Et c'est suffisant.`;
-  } else if(h>=20){
-    sym='💀';title='Le Prix de la Survie';
-    txt=`${S.name} a survécu. Mais à quel prix ? Les choix faits dans l'ombre pèsent désormais sur l'âme. Les Inquisiteurs murmureront. La corruption ronge lentement ce qui reste d'honneur. L'Emperor voit tout.`;
-  } else {
-    sym='🌀';title='L\'Hérésie Consumée';
-    txt=`L'âme de ${S.name} appartient aux Dieux du Chaos. Ce qui fut autrefois un guerrier de l'Imperium est désormais un outil de la Ruine Éternelle. Les Dieux rient. Et quelque part, très loin, l'Emperor pleure.`;
+      if(r===1&&sc.type==='trap'){
+        stripAll();
+        var nbox3=document.getElementById('nbox');
+        if(nbox3){var ca3=document.getElementById('carea');if(ca3)ca3.style.opacity='0';
+          nbox3.innerHTML='<div class="outbox ob">&#127922; 1 &mdash; FUMBLE. '+(c.outBad||'Catastrophe.')+'</div>'
+            +'<div class="robln">&#9888; DEPOUILLE &mdash; Tout votre equipement est perdu</div>';}
+        S.pendingDeltas={hp:-25,res:-20,honor:-10,xp:5};
+        var nb3=document.getElementById('nextbtn');if(nb3)nb3.style.display='block';
+        window.scrollTo({top:0,behavior:'smooth'});
+        return;
+      }
+
+      if(cat.fumble||!cat.good){
+        outText=c.outBad||('Resultat : '+cat.cat+'. '+c.out);
+        robbed=c.rob===true;
+        lootId=null;
+        deltas={hp:Math.min((c.hp||0),-10),res:(c.res||0),honor:Math.min((c.honor||0)-5,-5),xp:Math.max(5,(c.xp||0)-5)};
+      }else if(cat.crit){
+        outText=c.outGood||('CRITIQUE ! '+c.out);
+        robbed=false;
+        lootId=c.lootGood||c.loot||null;
+        deltas={hp:Math.max((c.hp||0),0),res:Math.max((c.res||0),0),honor:(c.honor||0)+10,xp:(c.xp||0)+15};
+      }else{
+        outText=c.out;
+        robbed=false;
+        lootId=c.loot||null;
+        deltas={hp:(c.hp||0),res:(c.res||0),honor:(c.honor||0),xp:(c.xp||0)};
+      }
+      applyAndShow(outText,lootId,deltas,robbed);
+    });
+  }else{
+    applyAndShow(c.out,c.loot||null,{hp:(c.hp||0),res:(c.res||0),honor:(c.honor||0),xp:(c.xp||0)},false);
   }
-
-  const scoreLabel=h>=70?'Légendaire':h>=45?'Honorable':h>=20?'Compromis':'Damné';
-
-  setMain(`
-    ${renderStats()}
-    ${panel(`
-      <div class="epanel">
-        <span class="esym">${sym}</span>
-        <div class="etitle">${title}</div>
-        ${div()}
-        <p class="etxt">${txt}</p>
-        <p style="font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.18em;color:var(--parch2);margin-bottom:1.2rem">
-          HONNEUR FINAL: ${h}/100 — ${scoreLabel}
-        </p>
-        <button class="btnp" onclick="restartSame()" style="margin:0 auto .7rem;display:block">↻ REJOUER (même faction)</button>
-        <button class="btns" onclick="showIntro()" style="margin:0 auto">← Changer de Faction</button>
-      </div>
-    `)}
-  `);
 }
 
-function renderDeath(){
-  setMain(`
-    ${panel(`
-      <div class="epanel">
-        <span class="esym" style="color:var(--blood)">💀</span>
-        <div class="etitle" style="color:var(--blood)">Mort pour l'Emperor</div>
-        ${div()}
-        <p class="etxt">${S.name} est tombé au combat. Le corps revient à la poussière. L'âme, si elle était pure, rejoindra peut-être les légions éternelles de l'Emperor. L'Imperium pleure ses martyrs — puis avance.</p>
-        <div class="lq" style="margin-bottom:1.2rem">« Pour mourir dans la gloire de l'Emperor est le plus grand honneur qui soit. »</div>
-        <button class="btnp" onclick="restartSame()" style="margin:0 auto .7rem;display:block">↻ RECOMMENCER</button>
-        <button class="btns" onclick="showIntro()" style="margin:0 auto">← Changer de Faction</button>
-      </div>
-    `)}
-  `);
+function advancePage(){
+  snd_pageTurn();
+  var d=S.pendingDeltas||{};
+  S.pendingDeltas=null;
+  var nb=document.getElementById('nextbtn');if(nb)nb.style.display='none';
+  nextScene(null,d);
 }
 
-function restartSame(){
-  S.act=0;S.usedScenes=[];S.hp=100;S.res=100;S.honor=S.fdata.startHonor;
-  S.phase='game';
+function typeWriter(txt,onDone){
+  var el=document.getElementById('ntxt');
+  if(!el){if(onDone)onDone();return;}
+  el.innerHTML='';
+  var paras=txt.split('\n\n').filter(function(p){return p.trim();});
+  if(!paras.length){if(onDone)onDone();return;}
+  if(txt.length>500||window.innerWidth<380){
+    el.innerHTML=paras.map(function(p){return '<p>'+p+'</p>';}).join('');
+    if(onDone)onDone();return;
+  }
+  var pi=0,ci=0;
+  var cur=document.createElement('p');el.appendChild(cur);
+  var iv=setInterval(function(){
+    var para=paras[pi];
+    if(ci<para.length){cur.textContent+=para[ci++];}
+    else{pi++;ci=0;if(pi<paras.length){cur=document.createElement('p');el.appendChild(cur);}
+      else{clearInterval(iv);if(onDone)onDone();}}
+  },11);
+}
+
+/* INTRO */
+function showIntro(){
+  stopSpeak();
+  var saveBtn=hasSave()?'<div style="margin-top:.9rem;text-align:center"><button class="btns" onclick="loadGame()" style="display:inline-block">&#128194; Reprendre la partie sauvegardee</button></div>':'';
+  setMain(mkpanel(
+    '<p class="ilore">Dans le 41eme millenaire, il n\'y a pas de paix parmi les etoiles — seulement un bain de sang éternel et le sacrifice de millions au nom de l\'Imperium.</p>'
+    +'<div class="lq">Seul l\'Homme peut fagonner son destin dans l\'obscurite absolue de ce millenaire.</div>'
+    +'<p class="ilore">Vous tenez le Codex de l\'Aventure Imperiale — un tome dont vous etes le heros. Chaque de jeté, chaque choix fait, fagonnera votre destin.</p>'
+    +mkdiv('&#9769;')
+    +'<p style="text-align:center;font-family:\'Cinzel\',serif;font-size:.66rem;letter-spacing:.22em;color:var(--parch2)">CHOISISSEZ VOTRE DESTIN</p>'
+    +'<div class="fgrid">'
+    +FACTIONS.map(function(f){return '<div class="fc" onclick="selectFaction(\''+f.id+'\')"><span class="fi">'+f.ico+'</span><div class="fn">'+f.name+'</div><div class="fd">'+f.desc+'</div><div class="fsl">'+f.sl+'</div></div>';}).join('')
+    +'</div>'+saveBtn
+  ));
+}
+
+function selectFaction(id){
+  S.faction=id;S.fdata=FACTIONS.filter(function(f){return f.id===id;})[0];S.honor=S.fdata.startHonor;
+  showNameInput();
+}
+
+function showNameInput(){
+  var f=S.fdata;
+  var it=ITEMS[f.startItem];
+  setMain(mkpanel(
+    '<div style="text-align:center;margin-bottom:.8rem"><div class="fbadge">'+f.ico+' '+f.name+' &mdash; '+f.chapter+'</div></div>'
+    +'<div class="lq">'+f.lore+'</div>'
+    +'<div style="margin-top:.6rem;padding:.5rem .7rem;background:var(--bg3);border:1px solid var(--bd);display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;text-align:center">'
+    +'<div><span style="font-family:\'Cinzel\',serif;font-size:.5rem;color:var(--parch3);display:block;letter-spacing:.1em">ATTAQUE</span><span style="font-family:\'Cinzel\',serif;font-size:1.1rem;color:var(--gold)">'+f.baseAtk+'</span></div>'
+    +'<div><span style="font-family:\'Cinzel\',serif;font-size:.5rem;color:var(--parch3);display:block;letter-spacing:.1em">DEFENSE</span><span style="font-family:\'Cinzel\',serif;font-size:1.1rem;color:var(--gold)">'+f.baseDef+'</span></div>'
+    +'<div><span style="font-family:\'Cinzel\',serif;font-size:.5rem;color:var(--parch3);display:block;letter-spacing:.1em">PV MAX</span><span style="font-family:\'Cinzel\',serif;font-size:1.1rem;color:var(--gold)">'+f.startHp+'</span></div>'
+    +'</div>'
+    +'<div style="margin-top:.55rem;padding:.45rem .65rem;background:var(--bg2);border:1px solid var(--bd);display:flex;align-items:center;gap:.55rem">'
+    +'<span style="font-size:1.2rem">'+it.ico+'</span>'
+    +'<div><div style="font-family:\'Cinzel\',serif;font-size:.62rem;color:var(--gold);letter-spacing:.05em">'+it.name+'</div>'
+    +'<div style="font-size:.72rem;color:var(--parch2);font-style:italic">'+it.desc+'</div></div></div>'
+    +mkdiv()
+    +'<p style="font-family:\'Cinzel\',serif;font-size:.68rem;letter-spacing:.14em;color:var(--parch2);text-align:center;margin-bottom:.6rem">NOMMEZ VOTRE GUERRIER</p>'
+    +'<div class="niw">'
+    +'<input class="ni" id="nf" type="text" placeholder="Entrez votre nom..." maxlength="28" autocomplete="off"/>'
+    +'<button class="btnp" onclick="startGame()">&#9769; COMMENCER</button>'
+    +'</div>'
+    +'<button class="btns" style="margin:0 auto" onclick="showIntro()">&#8592; Changer de Faction</button>'
+  ));
+  setTimeout(function(){
+    var inp=document.getElementById('nf');
+    if(inp){inp.focus();inp.addEventListener('keydown',function(e){if(e.key==='Enter')startGame();});}
+  },60);
+}
+
+function startGame(){
+  var nf=document.getElementById('nf');
+  var defs=['Brother Aldric','Commissaire Vorh','Inquisiteur Kaelith','Magos 7-Delta','Vorn Ironfang','Kael le Maudit'];
+  S.name=(nf?nf.value.trim():'')||rand(defs);
+  S.act=0;S.usedScenes=[];S.pageNum=1;
+  S.hp=S.fdata.startHp;S.maxHp=S.fdata.startHp;
+  S.res=100;S.honor=S.fdata.startHonor;S.xp=0;
+  S.baseAtk=S.fdata.baseAtk;S.baseDef=S.fdata.baseDef;
+  S.equip={weapon:null,armor:null,head:null};
+  S.pack=[null,null,null,null];S.inventory=[];
+  S.pendingDeltas=null;
+  addItem(S.fdata.startItem);
   nextScene(null,null);
 }
 
-/* ═══════════════════════════════════════
-   BOOT
-═══════════════════════════════════════ */
+/* ENDINGS */
+function renderEnding(){
+  stopSpeak();
+  var h=S.honor,sym,title,txt,sc;
+  if(h>=70){sym='&#9769;';title='Gloire Éternelle pour l\'Emperor';sc='Légendaire';
+    txt=S.name+' entre dans la legende de l\'Imperium. Vos exploits seront graves dans les Annales de Guerre pour des millenaires.';}
+  else if(h>=45){sym='&#9876;';title='Devoir Accompli';sc='Honorable';
+    txt='La mission est terminée. '+S.name+' a servi l\'Imperium avec honneur. L\'Emperor approuve.';}
+  else if(h>=20){sym='&#128128;';title='Le Prix de la Survie';sc='Compromis';
+    txt=S.name+' a survecu. Mais a quel prix ? Les choix faits dans l\'ombre pesent sur l\'ame.';}
+  else{sym='&#127752;';title='L\'Hérésie Consumée';sc='Damné';
+    txt='L\'ame de '+S.name+' appartient desormais aux Dieux du Chaos. Les Dieux rient.';}
+  var atk=getAtk(),def=getDef();
+  var eqN=[S.equip.weapon,S.equip.armor,S.equip.head].filter(Boolean).map(function(x){return x.ico+' '+x.name;}).join(' &middot; ');
+  setMain(renderStats()+mkpanel(
+    '<div class="epanel">'
+    +'<span class="esym">'+sym+'</span>'
+    +'<div class="etitle">'+title+'</div>'
+    +mkdiv()
+    +'<div class="pgnum">&mdash; Epilogue &mdash;</div>'
+    +'<p class="etxt">'+txt+'</p>'
+    +(eqN?'<div style="margin:.45rem 0;font-family:\'Cinzel\',serif;font-size:.6rem;color:var(--parch2)">Équipé : '+eqN+'</div>':'')
+    +'<p style="font-family:\'Cinzel\',serif;font-size:.58rem;letter-spacing:.16em;color:var(--parch2);margin-bottom:.9rem">HONNEUR : '+h+'/100 &mdash; '+sc+' &middot; XP : '+S.xp+' &middot; ATK '+atk+' &middot; DEF '+def+'</p>'
+    +'<button class="btnp" onclick="restartSame()" style="margin:0 auto .5rem;display:block">&#8635; Rejouer cette faction</button>'
+    +'<button class="btns" onclick="showIntro()" style="margin:0 auto">&#8592; Autre faction</button>'
+    +'</div>'
+  ));
+  if(S.ttsOn||S.autoRead)speak(txt);
+}
+
+function renderDeath(){
+  stopSpeak();snd_damnation();
+  var txts=[
+    S.name+' est tombe au combat. L\'ame, si elle etait pure, rejoindra les legions éternelles de l\'Emperor.',
+    'Dans ses derniers instants, '+S.name+' vit le visage de l\'Emperor. L\'Imperium ne manque pas de guerriers. Il manque de victoires.'
+  ];
+  var txt=rand(txts);
+  setMain(mkpanel(
+    '<div class="epanel">'
+    +'<span class="esym" style="color:var(--blood)">&#128128;</span>'
+    +'<div class="etitle" style="color:var(--blood)">Mort pour l\'Emperor</div>'
+    +mkdiv()
+    +'<p class="etxt">'+txt+'</p>'
+    +'<div class="lq">Pour mourir dans la gloire de l\'Emperor est le plus grand honneur qui soit.</div>'
+    +'<button class="btnp" onclick="restartSame()" style="margin:0 auto .5rem;display:block">&#8635; Recommencer</button>'
+    +'<button class="btns" onclick="showIntro()" style="margin:0 auto">&#8592; Autre faction</button>'
+    +'</div>'
+  ));
+  if(S.ttsOn||S.autoRead)speak(txt);
+}
+
+function restartSame(){
+  S.act=0;S.usedScenes=[];S.pageNum=1;
+  S.hp=S.fdata.startHp;S.maxHp=S.fdata.startHp;
+  S.res=100;S.honor=S.fdata.startHonor;S.xp=0;
+  S.equip={weapon:null,armor:null,head:null};
+  S.pack=[null,null,null,null];S.inventory=[];
+  S.pendingDeltas=null;
+  addItem(S.fdata.startItem);
+  nextScene(null,null);
+}
+
 showIntro();
 </script>
 </body>
